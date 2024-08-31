@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Modal from './modal';
 import { RxCross2 } from 'react-icons/rx';
 
@@ -7,6 +6,11 @@ function Login({ setLoginPopUp, setForgotPass, setSignUpPopUp, setLoginUser }) {
 
     function handleSignUp() {
         setSignUpPopUp(true)
+        setLoginPopUp(false)
+    }
+
+    function handleForgotPass() {
+        setForgotPass(true)
         setLoginPopUp(false)
     }
 
@@ -56,7 +60,7 @@ function Login({ setLoginPopUp, setForgotPass, setSignUpPopUp, setLoginUser }) {
                                     className="w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] placeholder-gray-500 text-xs md:text-sm outline-none text-white"
                                     type="password" id='password'
                                 />
-                                <button onClick={() => setForgotPass(true)} className='text-white text-xs md:text-sm mt-2'>Forgot your Password?</button>
+                                <button onClick={() => handleForgotPass()} className='text-white text-xs md:text-sm mt-2'>Forgot your Password?</button>
                             </div>
 
                             <div className='mt-3'>

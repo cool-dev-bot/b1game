@@ -2,23 +2,26 @@ import React from 'react'
 import Modal from '../modal'
 import { RxCross2 } from 'react-icons/rx'
 
-function BtcDeposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPopUp, setWithdraw }) {
-
+function BtcDeposit({ setCoinsDeposit, setDespositPopUp, setTokenDespositPopUp, setWithdraw, saveCoinName, coinsDeposit }) {
     function handleBtcDeposit() {
-        setBtcDespositPopUp(false)
+        setCoinsDeposit('')
         setDespositPopUp(true)
     }
 
     function goNextToken() {
-        setBtcDespositPopUp(false)
+        setCoinsDeposit('')
         setTokenDespositPopUp(true)
     }
 
     function handleWithdraw() {
         setWithdraw('withdraw')
         setDespositPopUp(false)
-        setBtcDespositPopUp(false)
+        setCoinsDeposit('')
         setTokenDespositPopUp(false)
+    }
+
+    function handleCancel() {
+        setCoinsDeposit('')
     }
 
     return (
@@ -27,7 +30,7 @@ function BtcDeposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPop
                 <div className="flex justify-between items-start">
                     {/* List Items */}
                     <ul className="flex space-x-4 md:space-x-6 lg:space-x-8 font-light">
-                        <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center px-2 py-1">
+                        <li className={`text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center px-2 py-1 ${coinsDeposit !== '' ? 'text-yellow-400' : 'text-[#B1B6C6]'}`}>
                             DEPOSITE
                         </li>
                         <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center py-1" onClick={() => handleWithdraw()}>
@@ -35,7 +38,7 @@ function BtcDeposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPop
                         </li>
                     </ul>
                     {/* Cancel Button */}
-                    <button className="hover:bg-[#252937] text-2xl text-white px-3 py-4 md:px-4 rounded-full">
+                    <button className="hover:bg-[#252937] text-2xl text-white px-3 py-4 md:px-4 rounded-full" onClick={() => handleCancel()}>
                         <RxCross2 />
                     </button>
                 </div>
@@ -45,9 +48,9 @@ function BtcDeposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPop
                     <button className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-light w-16 md:w-20 lg:w-24 h-8 cursor-pointer text-center" onClick={() => handleBtcDeposit()}>
                         Back
                     </button>
-                    <img src="/bitcoin.svg" alt="Logo" className="w-8 h-8 ml-6 mr-2 md:ml-9 md:mr-3" />
-                    <h1 className="text-gray-300 font-normal text-lg md:text-xl mr-2 md:mr-3">
-                        DEPOSIT BITCOIN
+                    <img src={`/depositfirstPopup/${saveCoinName}.svg`} alt="Logo" className="w-8 h-8 ml-6 mr-2 md:ml-9 md:mr-3" />
+                    <h1 className="text-gray-300 font-normal text-lg md:text-xl mr-2 md:mr-3 uppercase">
+                        DEPOSIT {saveCoinName}
                     </h1>
                     <p className="text-yellow-400 font-light ml-2 md:ml-3 cursor-pointer" onClick={() => goNextToken()}>View Transactions</p>
                 </div>
@@ -56,12 +59,12 @@ function BtcDeposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPop
                 <div className="bg-[#CBD7FF08] mt-4 md:mt-6 p-4 md:p-6 h-auto w-[90%] mx-auto rounded-md">
                     <div className="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-6">
                         <p className="text-[#B1B6C6] text-sm md:text-base text-center md:text-left">
-                            Send the amount of Bitcoin of your choice to <br /> the following address to receive the equivalent in Coins.
+                            Send the amount of {saveCoinName} of your choice to <br /> the following address to receive the equivalent in Coins.
                         </p>
                         <img src="/btcDeposit/qr.svg" alt="Example" className="w-3/4 md:w-1/3 h-auto mx-auto md:mx-0" />
                     </div>
                     <p className="text-white font-light text-sm md:text-base mt-4 text-center md:text-left uppercase">
-                        Your personal Bitcoin deposit address
+                        Your personal {saveCoinName} deposit address
                     </p>
                     <div className="flex flex-col md:flex-row items-center mt-4 space-y-2 md:space-y-0 md:space-x-2">
                         <p className="w-full md:w-4/5 h-10 rounded-md bg-[#131620] border-none text-[#B1B6C6] text-sm md:text-base p-2">
@@ -80,7 +83,7 @@ function BtcDeposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPop
                     </p>
                     <span className="text-[#B1B6C6] text-base md:text-lg">=</span>
                     <p className="w-full md:w-4/5 h-10 rounded-md bg-[#131620] flex justify-start items-center gap-3 border-none text-[#B1B6C6] text-sm md:text-base p-2">
-                        <img src="/btcDeposit/bitcoin.svg" alt="Small Logo" className="w-5 h-5" />0.0003234
+                        <img src={`/depositfirstPopup/${saveCoinName}.svg`} alt="Small Logo" className="w-5 h-5" />0.0003234
                     </p>
                 </div>
 

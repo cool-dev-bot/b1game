@@ -4,9 +4,7 @@ import RolleteContent from '../src/components/roulette/rouletteContent'
 function Rollete() {
     return (
         <>
-           <div className='w-full'>
-           <RolleteContent />
-           </div>
+            <RolleteContent />
         </>
     )
 }

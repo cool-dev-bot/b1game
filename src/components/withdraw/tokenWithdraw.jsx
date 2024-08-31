@@ -3,11 +3,19 @@ import Modal from '../modal'
 import { MdOutlineChevronLeft } from "react-icons/md";
 import { RxCross2 } from 'react-icons/rx';
 
-function TokenWithdraw({ setWithdraw, setDespositPopUp }) {
+function TokenWithdraw({ setWithdraw, setDespositPopUp, withDraw, saveCoinName }) {
 
     function handleWithdrawToDeposit() {
         setDespositPopUp(true)
         setWithdraw('')
+    }
+
+    function handleBack() {
+        if (withDraw !== 'erc') {
+            setWithdraw(saveCoinName)
+        } else {
+            setWithdraw('withdraw')
+        }
     }
 
     return (
@@ -19,7 +27,7 @@ function TokenWithdraw({ setWithdraw, setDespositPopUp }) {
                         <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center px-2 py-1" onClick={() => handleWithdrawToDeposit()}>
                             DEPOSITE
                         </li>
-                        <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center py-1">
+                        <li className={`text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center py-1 ${withDraw !== '' ? 'text-yellow-400' : 'text-[#B1B6C6]'}`}>
                             WITHDRAW
                         </li>
                     </ul>
@@ -31,7 +39,7 @@ function TokenWithdraw({ setWithdraw, setDespositPopUp }) {
 
                 {/* Back Button and Heading */}
                 <div className="flex items-center justify-start mt-4 md:mt-4">
-                    <button className="text-gray-300 hover:text-yellow-400 text-sm md:text-base" onClick={() => setWithdraw('btcwithdraw')}>
+                    <button className="text-gray-300 hover:text-yellow-400 text-sm md:text-base" onClick={() => handleBack()}>
                         <MdOutlineChevronLeft size={30} />
                     </button>
                     <h2 className="text-gray-300 font-normal text-base md:text-[1.5rem] ml-2">

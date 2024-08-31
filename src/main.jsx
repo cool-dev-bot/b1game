@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from '../pages/home.jsx'
 import Rollete from '../pages/roulette.jsx'
+import AdminPanel from './components/adminpanel/adminPanel.jsx'
 
 const Router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ const Router = createBrowserRouter([
       {
         path: '/roulette',
         element: <Rollete />
-      }
+      },
     ]
+  },
+  {
+    path: '/adminpanel',
+    element: <AdminPanel />
   }
 ])
 

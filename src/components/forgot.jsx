@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Modal from './modal';
 import { RxCross2 } from 'react-icons/rx';
 
-function Forgot({ setForgotPass }) {
+function Forgot({ setForgotPass, setSignUpPopUp, setLoginPopUp }) {
+
+    function handleSignUp() {
+        setForgotPass(false)
+        setSignUpPopUp(true)
+        setLoginPopUp(false)
+    }
+
     return (
         <Modal onClose={() => setForgotPass(false)}>
             <div className='bg-[#131620] mx-auto p-4 md:p-5'>
@@ -51,7 +57,7 @@ function Forgot({ setForgotPass }) {
                             </div>
 
                             <button className='bg-[#FFC701] mt-6 mb-4 text-center w-full py-2 md:py-2.5 rounded-md text-sm md:text-base font-semibold'>Send</button>
-                            <p className='text-center text-xs md:text-sm text-[#818E9D]'>Don't have an account? <Link className='text-white' to={'/signup'}>SignUp</Link></p>
+                            <p onClick={() => handleSignUp()} className='text-center text-xs md:text-sm text-[#818E9D]'>Don't have an account? <span className='text-white' >SignUp</span></p>
                         </div>
                     </div>
                 </div>

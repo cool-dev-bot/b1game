@@ -3,22 +3,28 @@ import Modal from '../modal'
 import { MdOutlineChevronLeft } from "react-icons/md";
 import { RxCross2 } from 'react-icons/rx';
 
-function TokenDeposit({ setBtcDespositPopUp, setTokenDespositPopUp, setDespositPopUp, setWithdraw }) {
-
-    useEffect(() => {
-        setBtcDespositPopUp(false)
-    }, [])
+function TokenDeposit({ setCoinsDeposit, setTokenDespositPopUp, setDespositPopUp, setWithdraw, coinsDeposit, saveCoinName, TokenDepositPopUp }) {
 
     function handleWithdraw() {
         setDespositPopUp(false)
-        setBtcDespositPopUp(false)
+        setCoinsDeposit('')
         setTokenDespositPopUp(false)
         setWithdraw('withdraw')
     }
 
     function handleBack() {
-        setBtcDespositPopUp(true)
+        if (coinsDeposit !== 'erc') {
+            setCoinsDeposit(saveCoinName)
+            setTokenDespositPopUp(false)
+        } else {
+            setDespositPopUp(true)
+            setTokenDespositPopUp(false)
+        }
+    }
+
+    function handleCancel() {
         setTokenDespositPopUp(false)
+        setCoinsDeposit('')
     }
 
     return (
@@ -27,7 +33,7 @@ function TokenDeposit({ setBtcDespositPopUp, setTokenDespositPopUp, setDespositP
                 <div className="flex justify-between items-start">
                     {/* List Items */}
                     <ul className="flex space-x-4 md:space-x-6 lg:space-x-8 font-light">
-                        <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center px-2 py-1">
+                        <li className={`text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center px-2 py-1 ${TokenDepositPopUp ? 'text-yellow-400' : 'text-[#B1B6C6]'}`}>
                             DEPOSITE
                         </li>
                         <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center py-1" onClick={() => handleWithdraw()}>
@@ -35,7 +41,7 @@ function TokenDeposit({ setBtcDespositPopUp, setTokenDespositPopUp, setDespositP
                         </li>
                     </ul>
                     {/* Cancel Button */}
-                    <button className="hover:bg-[#252937] text-2xl text-white px-3 py-4 md:px-4 rounded-full" onClick={() => setTokenDespositPopUp(false)}>
+                    <button className="hover:bg-[#252937] text-2xl text-white px-3 py-4 md:px-4 rounded-full" onClick={() => handleCancel()}>
                         <RxCross2 />
                     </button>
                 </div>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import SignUp from './signUp'
 import Login from './login';
 import Forgot from './forgot';
+import { Link } from 'react-router-dom';
 
 function Header({ setLoginUser, loginUser, setDespositPopUp }) {
 
@@ -80,9 +81,21 @@ function Header({ setLoginUser, loginUser, setDespositPopUp }) {
         setDespositPopUp(true)
     }
 
+    useEffect(() => {
+        if (signUpPopUp || loginPopUp || forgotPass) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [signUpPopUp, loginPopUp, forgotPass]);
+
+
     return (
         <>
-            <div className="bg-[#131620] w-full py-3 px-4 relative font-['oswald']">
+            <div className="bg-[#131620] max-w-full mx-auto py-3 px-4 relative font-['oswald']">
                 {
                     toggleMenu && (
                         <motion.div
@@ -152,14 +165,14 @@ function Header({ setLoginUser, loginUser, setDespositPopUp }) {
 
                 {
                     forgotPass && (
-                        <Forgot setForgotPass={setForgotPass} />
+                        <Forgot setForgotPass={setForgotPass} setSignUpPopUp={setSignUpPopUp} setLoginPopUp={setLoginPopUp} />
                     )
                 }
-                <div className='flex justify-between items-center'>
+                <div className='max-w-[1600px] mx-auto  flex justify-between items-center'>
                     <div className='flex items-center gap-10 lg:gap-32'>
-                        <div className='w-16'>
+                        <Link to='/' className='md:w-20 w-12  cursor-pointer'>
                             <img src="/logo.svg" alt="" />
-                        </div>
+                        </Link>
                         <div className=' hidden md:block'>
                             <div className='flex text-[#666E97] items-center gap-10'>
                                 {
@@ -188,17 +201,17 @@ function Header({ setLoginUser, loginUser, setDespositPopUp }) {
                             {
                                 loginUser ? (
                                     <div className='flex items-center'>
-                                        <div className='bg-[#363743] flex items-center gap-2 py-2 px-3 rounded-sm rounded-tr-none rounded-br-none'>
+                                        <div className='bg-[#363743] flex items-center gap-2 py-2 px-3 rounded-sm rounded-tr-none rounded-br-none cursor-pointer hover:border border-green-500 hover:border-x-2 hover:border-y-2'>
                                             <img src="/IfUserLogged/doller.svg" alt="" />
                                             <p>$ 0.00</p>
                                         </div>
-                                        <div className='flex items-center rounded-tl-none rounded-bl-none  gap-2 bg-[#6E34E2B2] py-2 px-4 rounded-sm text-white text-sm font font-light cursor-pointer' onClick={() => handleWalletCheck()}>
+                                        <div className='flex items-center rounded-tl-none rounded-bl-none  gap-2 bg-[#6E34E2B2] py-2 px-4 rounded-sm text-white text-sm font font-light hover:border border-green-500 hover:border-x-2 hover:border-y-2 cursor-pointer' onClick={() => handleWalletCheck()}>
                                             <img src="/IfUserLogged/wallet.svg" alt="" />
                                             <button>Wallet</button>
                                         </div>
-                                        <div className='ml-4'>
+                                        <Link to={'/adminpanel'} className='ml-4 w-10 hover:w-11'>
                                             <img src="/IfUserLogged/user.svg" alt="" />
-                                        </div>
+                                        </Link>
                                     </div>
                                 )
                                     :
@@ -215,7 +228,7 @@ function Header({ setLoginUser, loginUser, setDespositPopUp }) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

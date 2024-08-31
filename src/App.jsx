@@ -22,7 +22,7 @@ function App() {
   }
 
   return (
-    <div className='mainBg max-w-full h-full '>
+    <div className='mainBg max-w-screen h-full mx-auto'>
       <Header setLoginUser={setLoginUser} loginUser={loginUser} setDespositPopUp={setDespositPopUp} />
       <Outlet context={[setLoginUser, loginUser, setDespositPopUp, depositPopUp]} />
       <Footer />

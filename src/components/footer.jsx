@@ -41,7 +41,7 @@ function Footer() {
     }
     return (
         <>
-            <div className="bg-[#131620] pt-12  mt-10 footer">
+            <div className="bg-[#131620] pt-12 mt-10 footer max-w-full mx-auto">
                 <div className="w-full max-w-screen-xl mx-auto px-4">
                     <div className="flex flex-col xl:flex-row gap-8 xl:gap-12">
                         {/* Company Info Section */}
@@ -88,8 +88,8 @@ function Footer() {
                             </div>
                             <div>
                                 <h3 className="text-white text-lg xl:text-xl font-semibold">EVENTS</h3>
-                                <p className="my-2  text-[1rem]  xl:text-base cursor-pointer hover:text-white transition-all">RACE</p>
-                                <p className="my-2  text-[1rem]  xl:text-base cursor-pointer hover:text-white transition-all">REWARDS</p>
+                                <p className="my-2  text-[1rem] xl:text-base cursor-pointer hover:text-white transition-all">RACE</p>
+                                <p className="my-2  text-[1rem] xl:text-base cursor-pointer hover:text-white transition-all">REWARDS</p>
                             </div>
                             <div>
                                 <h3 className="text-white text-lg xl:text-xl font-semibold">GAMES</h3>
@@ -114,22 +114,22 @@ function Footer() {
                     <div>
                         <p className='my-8 text-white font-light'>Sponsorship and Gaming Responsibilities</p>
                         <div className='flex md:justify-between md:items-center flex-wrap gap-10'>
-                            <div className='w-28'>
+                            <div className='w-20 md:w-28'>
                                 <img className='w-full' src="/sponsor/sigma.svg" alt="" />
                             </div>
-                            <div className='w-28'>
+                            <div className='w-20 md:w-28'>
                                 <img src="/sponsor/cloud9.svg" alt="" />
                             </div>
-                            <div className='w-28'>
+                            <div className='w-20 md:w-28'>
                                 <img src="/sponsor/afa.svg" alt="" />
                             </div>
-                            <div className='w-28'>
+                            <div className='w-20 md:w-28'>
                                 <img src="/sponsor/crypto.svg" alt="" />
                             </div>
-                            <div className='w-28'>
+                            <div className='w-20 md:w-28'>
                                 <img src="/sponsor/itech.svg" alt="" />
                             </div>
-                            <div className='w-28'>
+                            <div className='w-20 md:w-28'>
                                 <img src="/sponsor/gaming.svg" alt="" />
                             </div>
                         </div>

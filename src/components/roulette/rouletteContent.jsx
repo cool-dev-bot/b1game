@@ -1,13 +1,16 @@
 import React from 'react';
 import Sidebar from '../sidebar';
-
+import { motion } from 'framer-motion';
 function RolleteContent() {
     return (
-        <div className="w-[100%] h-full md:h-full mx-auto font-['oswald'] pl-4 pr-4 md:pr-0 sm:pl-4 md:pl-5">
+        <div className="max-w-[1500px] h-full md:h-full mx-auto font-['oswald'] pl-4 pr-4 md:pr-0 sm:pl-4 md:pl-5">
             <div className='flex flex-col md:flex-row justify-between md:pr-3 mb-4 py-5 md:py-6 gap-5 lg:gap-0'>
                 <Sidebar />
-                <div className='md:w-[88%] md:mx-auto'>
-                    <div className='flex justify-center w-full max-w-[1150px] overflow-hidden mx-auto'>
+                <motion.div className='md:w-[88%] md:mx-auto'
+                  >
+                    <motion.div className='flex justify-center w-full max-w-[1150px] overflow-hidden mx-auto'initial={{ opacity: 0, x: -100 }} // Start off-screen to the left and invisible
+                 animate={{ opacity: 1, x: 0 }}   // Move to the center and become visible
+                 transition={{ type: 'spring', stiffness: 50 }}>
                         <div className='flex justify-center'>
                             <div className='flex-shrink-0'>
                                 <img src="/rollete/goldCoin.svg" alt="Gold Coin" className="w-full max-w-[100px] h-auto" />
@@ -43,7 +46,7 @@ function RolleteContent() {
                                 <img src="/rollete/silverCoin.svg" alt="Silver Coin" className="w-full max-w-[100px] h-auto" />
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     <div className='mt-10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-lg mx-auto relative'>
                         <input
@@ -55,7 +58,10 @@ function RolleteContent() {
                         </div>
                     </div>
 
-                    <div className='w-full mx-auto'>
+                    <motion.div className='w-full mx-auto'
+                    initial={{ opacity: 0, y: -100 }} // Start off-screen to the left and invisible
+                    animate={{ opacity: 1, y: 0 }}   // Move to the center and become visible
+                    transition={{ type: 'spring', stiffness: 50 }}>
                         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-5 md:gap-4 xl:grid-cols-3 xl:gap-8'>
                             <div className='w-full max-w-sm mx-auto'>
                                 <div className='bg-[#131620] text-[#666E97] py-3 px-4 rounded-md justify-between flex drop-shadow-custom mb-2 md:mb-7 cursor-pointer'>
@@ -145,9 +151,9 @@ function RolleteContent() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                </div>
+                </motion.div>
             </div>
         </div>
     );

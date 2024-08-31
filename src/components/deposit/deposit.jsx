@@ -2,10 +2,11 @@ import React from 'react'
 import { RxCross2 } from 'react-icons/rx'
 import Modal from '../modal'
 
-function Deposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPopUp, setWithdraw }) {
+function Deposit({ setCoinsDeposit, setDespositPopUp, setTokenDespositPopUp, setWithdraw, setSaveCoinName, deposit, withDraw }) {
 
-    function handleBitCoin() {
-        setBtcDespositPopUp(true)
+    function handleBitCoin(coinname) {
+        setCoinsDeposit(coinname)
+        setSaveCoinName(coinname)
         setDespositPopUp(false)
         setDespositPopUp(false)
     }
@@ -16,7 +17,7 @@ function Deposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPopUp,
 
     function handleWithdraw() {
         setDespositPopUp(false)
-        setBtcDespositPopUp(false)
+        setCoinsDeposit('')
         setTokenDespositPopUp(false)
         setWithdraw('withdraw')
     }
@@ -27,10 +28,10 @@ function Deposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPopUp,
                 <div className="flex justify-between items-start">
                     {/* List Items */}
                     <ul className="flex space-x-4 md:space-x-6 lg:space-x-8 font-light">
-                        <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center px-2 py-1">
+                        <li className={`text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center px-2 py-1 ${deposit ? 'text-yellow-400' : 'text-[#B1B6C6]'}`}>
                             DEPOSITE
                         </li>
-                        <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center py-1" onClick={() => handleWithdraw()}>
+                        <li className={`text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center py-1 ${withDraw && !deposit == 'withdraw' ? 'text-yellow-400' : 'text-[#B1B6C6]'}`} onClick={() => handleWithdraw()}>
                             WITHDRAW
                         </li>
                     </ul>
@@ -48,25 +49,25 @@ function Deposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPopUp,
 
                 {/* Divs with Logos and Text */}
                 <div className="mt-6 md:mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer" onClick={() => handleBitCoin()}>
+                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer" onClick={() => handleBitCoin('bitcoin')}>
                         <img src="/depositfirstPopup/bitcoin.svg" alt="Logo 1" className="w-10 md:w-12 h-10 md:h-12 mb-1 md:mb-2" />
                         <p className="text-[#B1B6C6] text-[0.65rem] md:text-[0.7rem]">Bitcoin (BTC)</p>
                     </div>
-                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer">
-                        <img src="/depositfirstPopup/etheriume.svg" alt="Logo 2" className="w-10 md:w-12 h-10 md:h-12 mb-1 md:mb-2" />
+                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer" onClick={() => handleBitCoin('ethereum')}>
+                        <img src="/depositfirstPopup/ethereum.svg" alt="Logo 2" className="w-10 md:w-12 h-10 md:h-12 mb-1 md:mb-2" />
                         <p className="text-[#B1B6C6] text-[0.65rem] md:text-[0.7rem]">Ethereum (ETH)</p>
                     </div>
-                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer">
+                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer" onClick={() => handleBitCoin('litecoin')}>
                         <img src="/depositfirstPopup/litecoin.svg" alt="Logo 3" className="w-10 md:w-12 h-10 md:h-12 mb-1 md:mb-2" />
                         <p className="text-[#B1B6C6] text-[0.65rem] md:text-[0.7rem]">Litecoin (LTC)</p>
                     </div>
-                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer">
-                        <img src="/depositfirstPopup/Solana.svg" alt="Logo 4" className="w-10 md:w-12 h-10 md:h-12 mb-1 md:mb-2" />
+                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer" onClick={() => handleBitCoin('solana')}>
+                        <img src="/depositfirstPopup/solana.svg" alt="Logo 4" className="w-10 md:w-12 h-10 md:h-12 mb-1 md:mb-2" />
                         <p className="text-[#B1B6C6] text-[0.65rem] md:text-[0.7rem]">Solana (SOL)</p>
                     </div>
 
                     {/* Last Div with 4 Images in 2x2 Grid */}
-                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md">
+                    <div className="flex flex-col items-center bg-[#CBD7FF08] p-3 md:p-4 rounded-md cursor-pointer" onClick={() => handleBitCoin('erc')}>
                         <div className="grid grid-cols-2 gap-2">
                             <img src="/depositfirstPopup/1(4)img.svg" alt="Logo 4" className="w-7 h-7 mb-2" />
                             <img src="/depositfirstPopup/2(4)img.svg" alt="Logo 4" className="w-7 h-7 mb-2" />
@@ -80,7 +81,7 @@ function Deposit({ setBtcDespositPopUp, setDespositPopUp, setTokenDespositPopUp,
                     </div>
                 </div>
             </div>
-        </Modal>
+        </Modal >
     )
 }
 

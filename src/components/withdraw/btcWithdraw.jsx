@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from '../modal'
 import { RxCross2 } from 'react-icons/rx'
 
-function BtcWithdraw({ setWithdraw, setDespositPopUp }) {
+function BtcWithdraw({ setWithdraw, setDespositPopUp, withDraw }) {
 
     function handleBackDeposit() {
         setWithdraw('withdraw')
@@ -26,7 +26,7 @@ function BtcWithdraw({ setWithdraw, setDespositPopUp }) {
                         <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center px-2 py-1" onClick={() => handleWithdrawToDeposit()}>
                             DEPOSITE
                         </li>
-                        <li className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center py-1">
+                        <li className={`text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-normal w-20 md:w-24 lg:w-28 h-8 cursor-pointer text-center py-1 ${withDraw !== '' ? 'text-yellow-400' : 'text-[#B1B6C6]'}`}>
                             WITHDRAW
                         </li>
                     </ul>
@@ -41,9 +41,9 @@ function BtcWithdraw({ setWithdraw, setDespositPopUp }) {
                     <button className="text-[#B1B6C6] rounded-md hover:text-yellow-400 hover:bg-[#CBD7FF13] bg-[#CBD7FF08] font-light w-16 md:w-20 lg:w-24 h-8 cursor-pointer text-center" onClick={() => handleBackDeposit()}>
                         Back
                     </button>
-                    <img src="/bitcoin.svg" alt="Logo" className="w-8 h-8 ml-6 mr-2 md:ml-9 md:mr-3" />
-                    <h1 className="text-gray-300 font-normal text-lg md:text-xl mr-2 md:mr-3">
-                        WITHDRAW BITCOIN
+                    <img src={`/depositfirstPopup/${withDraw}.svg`} alt="Logo" className="w-8 h-8 ml-6 mr-2 md:ml-9 md:mr-3" />
+                    <h1 className="text-gray-300 font-normal text-lg md:text-xl mr-2 md:mr-3 uppercase">
+                        WITHDRAW {withDraw}
                     </h1>
                     <p className="text-yellow-400 font-light ml-2 md:ml-3 cursor-pointer" onClick={() => goNextToken()}>View Transactions</p>
                 </div>
@@ -52,12 +52,12 @@ function BtcWithdraw({ setWithdraw, setDespositPopUp }) {
                 <div className="bg-[#CBD7FF08] mt-4 md:mt-6 p-4 md:p-6 h-auto w-[90%] mx-auto rounded-md">
                     <div className="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-6">
                         <p className="text-[#B1B6C6] text-sm md:text-base text-center md:text-left">
-                            Send the amount of Bitcoin of your choice to <br /> the following address to receive the equivalent in Coins.
+                            Send the amount of {withDraw} of your choice to <br /> the following address to receive the equivalent in Coins.
                         </p>
                         <img src="/btcDeposit/qr.svg" alt="Example" className="w-3/4 md:w-1/3 h-auto mx-auto md:mx-0" />
                     </div>
                     <p className="text-white font-light text-sm md:text-base mt-4 text-center md:text-left uppercase">
-                        Your personal Bitcoin Withdraw address
+                        Your personal {withDraw} Withdraw address
                     </p>
                     <div className="flex flex-col md:flex-row items-center mt-4 space-y-2 md:space-y-0 md:space-x-2">
                         <p className="w-full md:w-4/5 h-12 rounded-md bg-[#131620] border-none text-[#B1B6C6] text-sm md:text-base p-2  break-words">
@@ -76,7 +76,7 @@ function BtcWithdraw({ setWithdraw, setDespositPopUp }) {
                     </p>
                     <span className="text-[#B1B6C6] text-base md:text-lg">=</span>
                     <p className="w-full md:w-4/5 h-10 rounded-md bg-[#131620] flex justify-start items-center gap-3 border-none text-[#B1B6C6] text-sm md:text-base p-2">
-                        <img src="/btcDeposit/bitcoin.svg" alt="Small Logo" className="w-5 h-5" />0.0003234
+                        <img src={`/depositfirstPopup/${withDraw}.svg`} alt="Small Logo" className="w-5 h-5" />0.0003234
                     </p>
                 </div>
 
