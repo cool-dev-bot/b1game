@@ -264,16 +264,16 @@ function Header({ setLoginUser, loginUser, setDespositPopUp, depositPopUp }) {
 
                             {
                                 loginUser ? (
-                                    <div className='flex items-center'>
-                                        <div className='bg-[#363743] flex items-center gap-2 py-2 px-3 rounded-sm rounded-tr-none rounded-br-none cursor-pointer hover:border border-green-500 hover:border-x-2 hover:border-y-2'>
+                                    <div className='flex items-start'>
+                                        <div className='bg-[#363743] flex items-center gap-2 py-2 sm:py-2 px-1 sm:px-3 rounded-sm rounded-tr-none rounded-br-none sm:text-sm text-[0.9rem] cursor-pointer hover:border border-green-500 hover:border-x-2 hover:border-y-2'>
                                             <img src="/IfUserLogged/doller.svg" alt="" />
                                             <p>$ 0.00</p>
                                         </div>
-                                        <div className='flex items-center rounded-tl-none rounded-bl-none  gap-2 bg-[#6E34E2B2] py-2 px-4 rounded-sm text-white text-sm font font-light hover:border border-green-500 hover:border-x-2 hover:border-y-2 cursor-pointer' onClick={() => handleWalletCheck()}>
+                                        <div className='flex items-center rounded-tl-none rounded-bl-none  gap-2 bg-[#6E34E2B2] py-2 sm:py-2 px-2 sm:px-3 rounded-sm text-white sm:text-sm text-[0.8rem] font font-light hover:border border-green-500 hover:border-x-2 hover:border-y-2 cursor-pointer' onClick={() => handleWalletCheck()}>
                                             <img src="/IfUserLogged/wallet.svg" alt="" />
                                             <button>Wallet</button>
                                         </div>
-                                        <Link to={'/adminpanel'} className='ml-4 w-10 hover:w-11'>
+                                        <Link to={'/adminpanel'} className='sm:ml-4 ml-4 mt-1 sm:w-10 w-8 hover:w-11'>
                                             <img src="/IfUserLogged/user.svg" alt="" />
                                         </Link>
                                     </div>
