@@ -31,7 +31,7 @@ function LandingPage() {
     },
 
     {
-      img: 'public/slider-2.svg',
+      img: 'https://i.ibb.co/fGfQhTc/edd742732116b345cc773be9d02d8f95.png',
 
     },
     {
