@@ -13,39 +13,39 @@ function LandingPage() {
 
   const banner = [
     {
-      img: 'https://s3-alpha-sig.figma.com/img/eee1/32e5/5dee5480a617c1739caf572bd39ab961?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jKFcggz9AidBJ6TyHHGdKIdoPuJNM2A657IEdmiUK1sY~vlbqI5LMoxJ7bt6YhSRH695hAh8NGG-UrIGo99rz4ZJ2ASy~1uvbjNbtbtdPoTqXDXUVWDZP98Rc~MNBX6STbN7SpH3sjRzUGJO22NflxVPcDG4nkLfmxcx6TP~O6g7j92fs9LXJ~D1NjWxEtLwTlg2j0DYOG0M~6ekXUeZHqUmcsPvANCGTlmUWhKiPCBIQ~O1VIhnHv0frxJPkMQqEE~4T9uwmmrMRXl7KtDd5H8qJYQwJWQauAazaMphGV5~gj2HYNQeVaHgXGzn75bknFQ1JVe2KuEEHdoh2m3~Yw__'
+      img: 'public/banner-main.svg'
     },
 
     {
-      img: 'https://images.unsplash.com/photo-1639710342143-f87416f1a913?q=80&w=1834&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      img: 'public/banner-main.svg'
     },
 
     {
-      img: 'https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=1797&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      img: 'public/banner-main.svg'
     },
   ]
   const gamesPoster = [
     {
-      img: 'https://s3-alpha-sig.figma.com/img/ab10/a54b/41b5d7ca2f0e5122f5540aaa34f0d195?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OMOBUlWf5McX3xdSPekO4ahEGbiEeLCoqVZo3sjgz~3B7RuulouOjbMHf68XiBKOjnwQwgJFtP8UQodXTWgOApW2b9usNTUBSXNm9XzSKVWycrAA2h9F-lS39890HDQnDNWUKzXjs5zpo6D3DQ9GkVhpdsEQJsxlR6iFTiBR5t3l-3TPTAWa2uiBMGduVXrQCrFYTYJ2dNxosh7RhVMneXBUqyu5UlmKr74gkcz2HrolMU6rG99N4QkihXrU1fMe6-Itr~BtL6CM2z-yRbRC8panqwmDhziJqPSKzIPBEBdKsuzLZAAR0EmcSTRrHQRQPKqGGvA5ZQm5V1cdrVszBw__',
+      img: 'public/slider-1.svg',
 
     },
 
     {
-      img: 'https://s3-alpha-sig.figma.com/img/6df7/62f9/11ef45330cf5ca47bf3d0525f86cf672?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ld3WrVqXaEmy0-qzd~QMQ4vbvt38rNvA3zx3AdKZLRqgbsY83PieT0g0H1D3sDkey8qKW6IDZW~ru0MxQcbBSGrWqG-UxAtDylkaYwLieEuMzo7lVf~4qHa2QSK5Bg~wX5OOUaKWUgnfPqxJZGwvqBM6MixXamHXyFX7w~meklIVUxkbyEryN6-LHR0VqvNVrdsHT72pygmc2C38XUEf-pd0dZP51OuipWtvloY7uuNyHSMSU8RbrBgO-iuxjsucMxePnsjP132rWJbFvq1BM8jL2E60QqCLVaqguGVK7dQEnVL9n1hYXEFEbWQ21Xr77lImWepnTntIbwTxFObAAA__',
+      img: 'public/slider-2.svg',
 
     },
     {
-      img: 'https://s3-alpha-sig.figma.com/img/5d2a/d0b4/edd742732116b345cc773be9d02d8f95?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NdlwFtwthfFbFsEGDrHnAK6c1NEdCUlxS4tiYFJ4xfdvFEi6cv~jnVFkrPYpwYsVAaJq888cD0PxlMX7SdicER1hGtRmSOHYPL54jU0TkNl7E0lyzr4nbPdfVDFbEmTtwE4AOKRxjIgAJyFwG6odKTuYxOUtSKSktDrEPfW4GZWEPQqcpCVWX8l-xm9Mo~OO7zZi4N5z-1E-~BDQ6H9Lhyhz5Nd7I7kYosxG1DCB4aOrr0QgbFz3LK3ioUTrKC4KEZf~HzdL-m0HWbPPF4-TshgePY5USWUUGrc8nb63jXA9BbYlT6m5US34suRmEXBJj5NsdF6WoM1PY~ixx~wHAQ__',
+      img: 'public/slider-3.svg',
     },
 
     {
-      img: 'https://s3-alpha-sig.figma.com/img/3ce1/4753/9fdc801a2effc74f7b7d022c0f0f42b1?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Ua6k5WCVyY708-9p12~3Tnw~2PrBPr7jxlG~TIywoF~nS-b9cFbxVT2bs-MskPx3hu9A3x7gwzokV2cynidhHunV2MtcBxpv3FSiQd57UAsyunQjt3fzxJaDgLx6GJ3fFjMwY~RZ~p-ykAYgf0RiuHyhqS7kwt9iphwcvjtUVjL2mfkc25z0T9eXv3Dp-99bCkgUYKaQNhBv5m6x306uva0UjZ8e5o9YLLT6nEOU1vOvSpp2rG76zfLlqzAHEzhN8QqltiUfmy3ov~Jyjimdx-4vGKn-7a0nErhwJcx2HMTihRUrXAyCL0qy6KQRml1BDkDWKFlMFLTOOx5tyayBGw__',
+      img: 'public/slider-4.svg',
     },
     {
-      img: 'https://s3-alpha-sig.figma.com/img/3ce1/4753/9fdc801a2effc74f7b7d022c0f0f42b1?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Ua6k5WCVyY708-9p12~3Tnw~2PrBPr7jxlG~TIywoF~nS-b9cFbxVT2bs-MskPx3hu9A3x7gwzokV2cynidhHunV2MtcBxpv3FSiQd57UAsyunQjt3fzxJaDgLx6GJ3fFjMwY~RZ~p-ykAYgf0RiuHyhqS7kwt9iphwcvjtUVjL2mfkc25z0T9eXv3Dp-99bCkgUYKaQNhBv5m6x306uva0UjZ8e5o9YLLT6nEOU1vOvSpp2rG76zfLlqzAHEzhN8QqltiUfmy3ov~Jyjimdx-4vGKn-7a0nErhwJcx2HMTihRUrXAyCL0qy6KQRml1BDkDWKFlMFLTOOx5tyayBGw__',
+      img: 'public/slider-5.svg',
     },
     {
-      img: 'https://s3-alpha-sig.figma.com/img/3ce1/4753/9fdc801a2effc74f7b7d022c0f0f42b1?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Ua6k5WCVyY708-9p12~3Tnw~2PrBPr7jxlG~TIywoF~nS-b9cFbxVT2bs-MskPx3hu9A3x7gwzokV2cynidhHunV2MtcBxpv3FSiQd57UAsyunQjt3fzxJaDgLx6GJ3fFjMwY~RZ~p-ykAYgf0RiuHyhqS7kwt9iphwcvjtUVjL2mfkc25z0T9eXv3Dp-99bCkgUYKaQNhBv5m6x306uva0UjZ8e5o9YLLT6nEOU1vOvSpp2rG76zfLlqzAHEzhN8QqltiUfmy3ov~Jyjimdx-4vGKn-7a0nErhwJcx2HMTihRUrXAyCL0qy6KQRml1BDkDWKFlMFLTOOx5tyayBGw__',
+      img: 'public/slider-6.svg',
     },
 
   ]
@@ -104,10 +104,10 @@ function LandingPage() {
             <div className='relative w-full'>
               {/* Navigation Buttons */}
               <button className='absolute top-[4.3rem] -left-5 transform -translate-y-1/2 cursor-pointer md:block hidden z-10' onClick={() => handlePrev()}>
-                <img src="/left.svg" alt="Previous" />
+                <img src="public/banner-left.svg" alt="Previous" />
               </button>
               <button className='absolute top-[4.3rem] right-6 transform -translate-y-1/2 cursor-pointer md:block hidden z-10' onClick={() => handleNext()}>
-                <img src="/right.svg" alt="Next" />
+                <img src="public/banner-right.svg" alt="Next" />
               </button>
 
               {/* Image Slider */}
