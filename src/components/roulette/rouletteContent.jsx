@@ -7,10 +7,10 @@ function RolleteContent() {
             <div className='flex flex-col md:flex-row justify-between md:pr-3 mb-4 py-5 md:py-6 gap-5 lg:gap-0'>
                 <Sidebar />
                 <motion.div className='md:w-[88%] md:mx-auto'
-                  >
-                    <motion.div className='flex justify-center w-full max-w-[1150px] overflow-hidden mx-auto'initial={{ opacity: 0, x: -100 }} // Start off-screen to the left and invisible
-                 animate={{ opacity: 1, x: 0 }}   // Move to the center and become visible
-                 transition={{ type: 'spring', stiffness: 50 }}>
+                >
+                    <motion.div className='flex justify-center w-full max-w-[1150px] overflow-hidden mx-auto' initial={{ opacity: 0, x: -100 }} // Start off-screen to the left and invisible
+                        animate={{ opacity: 1, x: 0 }}   // Move to the center and become visible
+                        transition={{ type: 'spring', stiffness: 50 }}>
                         <div className='flex justify-center'>
                             <div className='flex-shrink-0'>
                                 <img src="/rollete/goldCoin.svg" alt="Gold Coin" className="w-full max-w-[100px] h-auto" />
@@ -59,9 +59,9 @@ function RolleteContent() {
                     </div>
 
                     <motion.div className='w-full mx-auto'
-                    initial={{ opacity: 0, y: -100 }} // Start off-screen to the left and invisible
-                    animate={{ opacity: 1, y: 0 }}   // Move to the center and become visible
-                    transition={{ type: 'spring', stiffness: 50 }}>
+                        initial={{ opacity: 0, y: -100 }} // Start off-screen to the left and invisible
+                        animate={{ opacity: 1, y: 0 }}   // Move to the center and become visible
+                        transition={{ type: 'spring', stiffness: 50 }}>
                         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-5 md:gap-4 xl:grid-cols-3 xl:gap-8'>
                             <div className='w-full max-w-sm mx-auto'>
                                 <div className='bg-[#131620] text-[#666E97] py-3 px-4 rounded-md justify-between flex drop-shadow-custom mb-2 md:mb-7 cursor-pointer'>

@@ -3,9 +3,15 @@ import { motion } from 'framer-motion'
 import SignUp from './signUp'
 import Login from './login';
 import Forgot from './forgot';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
+import Deposit from './deposit/deposit';
+import BtcDeposit from './deposit/btcDeposit';
+import Withdraw from './withdraw/withdraw';
+import BtcWithdraw from './withdraw/btcWithdraw';
+import TokenWithdraw from './withdraw/tokenWithdraw';
+import TokenDeposit from './deposit/tokenDeposit';
 
-function Header({ setLoginUser, loginUser, setDespositPopUp }) {
+function Header({ setLoginUser, loginUser, setDespositPopUp, depositPopUp }) {
 
     const [toggleMenu, setToggleMenu] = useState(false)
     const [signUpPopUp, setSignUpPopUp] = useState(false)
@@ -77,9 +83,19 @@ function Header({ setLoginUser, loginUser, setDespositPopUp }) {
         }
     }, [loginUser])
 
+
+    const [btcDepositPopUp, setBtcDespositPopUp] = useState(false)
+    const [TokenDepositPopUp, setTokenDespositPopUp] = useState(false)
+
+    const [withDraw, setWithdraw] = useState('')
+
+    const outlet = useOutletContext()
+
     function handleWalletCheck() {
         setDespositPopUp(true)
     }
+    const [coinsDeposit, setCoinsDeposit] = useState('')
+    const [saveCoinName, setSaveCoinName] = useState('')
 
     useEffect(() => {
         if (signUpPopUp || loginPopUp || forgotPass) {
@@ -92,10 +108,58 @@ function Header({ setLoginUser, loginUser, setDespositPopUp }) {
         };
     }, [signUpPopUp, loginPopUp, forgotPass]);
 
+    useEffect(() => {
+        if (btcDepositPopUp || TokenDepositPopUp || withDraw !== '' || depositPopUp) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [btcDepositPopUp, TokenDepositPopUp, withDraw, outlet]);
 
     return (
         <>
             <div className="bg-[#131620] max-w-full mx-auto py-3 px-4 relative font-['oswald']">
+                {/* deposit */}
+                {depositPopUp && (
+                    <Deposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={setDespositPopUp} setWithdraw={setWithdraw} setTokenDespositPopUp={setTokenDespositPopUp} setSaveCoinName={setSaveCoinName} deposit={depositPopUp} withDraw={withDraw} />
+                )}
+
+                {coinsDeposit == 'bitcoin' && (
+                    <BtcDeposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={setDespositPopUp} setTokenDespositPopUp={setTokenDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} coinsDeposit={coinsDeposit} />
+                )}
+
+                {coinsDeposit == 'ethereum' && (
+                    <BtcDeposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={setDespositPopUp} setTokenDespositPopUp={setTokenDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} />
+                )}
+
+                {coinsDeposit == 'litecoin' && (
+                    <BtcDeposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={setDespositPopUp} setTokenDespositPopUp={setTokenDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} />
+                )}
+
+                {coinsDeposit == 'solana' && (
+                    <BtcDeposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={setDespositPopUp} setTokenDespositPopUp={setTokenDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} />
+                )}
+
+                {coinsDeposit == 'erc' && (
+                    <TokenDeposit setCoinsDeposit={setCoinsDeposit} coinsDeposit={coinsDeposit} setTokenDespositPopUp={setTokenDespositPopUp} setDespositPopUp={setDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} />
+                )}
+
+                {TokenDepositPopUp && (
+                    <TokenDeposit  setCoinsDeposit={setCoinsDeposit} coinsDeposit={coinsDeposit} setTokenDespositPopUp={setTokenDespositPopUp} setDespositPopUp={setDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} deposit={depositPopUp} TokenDepositPopUp={TokenDepositPopUp} />
+                )}
+                {/* deposit */}
+                {/* withdraw */}
+                {withDraw === 'withdraw' && <Withdraw withDraw={withDraw} setWithdraw={setWithdraw} setDespositPopUp={setDespositPopUp} setSaveCoinName={setSaveCoinName} />}
+                {withDraw === 'bitcoin' && <BtcWithdraw setWithdraw={setWithdraw} setDespositPopUp={setDespositPopUp} withDraw={withDraw} />}
+                {withDraw === 'ethereum' && <BtcWithdraw setWithdraw={setWithdraw} setDespositPopUp={setDespositPopUp} withDraw={withDraw} />}
+                {withDraw === 'litecoin' && <BtcWithdraw setWithdraw={setWithdraw} setDespositPopUp={setDespositPopUp} withDraw={withDraw} />}
+                {withDraw === 'solana' && <BtcWithdraw setWithdraw={setWithdraw} setDespositPopUp={setDespositPopUp} withDraw={withDraw} />}
+                {withDraw === 'erc' && <TokenWithdraw setWithdraw={setWithdraw} setDespositPopUp={setDespositPopUp} saveCoinName={saveCoinName} withDraw={withDraw} />}
+                {withDraw === 'tokenwithdraw' && <TokenWithdraw setWithdraw={setWithdraw} setDespositPopUp={setDespositPopUp} saveCoinName={saveCoinName} withDraw={withDraw} />}
+                {/* withdraw */}
                 {
                     toggleMenu && (
                         <motion.div
@@ -106,7 +170,7 @@ function Header({ setLoginUser, loginUser, setDespositPopUp }) {
                             transition={{ duration: 0.4, ease: 'easeInOut' }}
                         >
                             <div className='flex items-center justify-between my-2'>
-                                <img src="/logo.svg" alt="" className='w-20 pt-1' />
+                                <img src="/logo.svg" alt="" className='w-20  pt-1' />
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="28" height="28" viewBox="0 0 50 50" fill='#ffffff' className='cursor-pointer' onClick={() => setToggleMenu(false)}>
                                     <path d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"></path>
                                 </svg>

@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className='mainBg max-w-screen h-full mx-auto'>
-      <Header setLoginUser={setLoginUser} loginUser={loginUser} setDespositPopUp={setDespositPopUp} />
+      <Header setLoginUser={setLoginUser} loginUser={loginUser} setDespositPopUp={setDespositPopUp} depositPopUp={depositPopUp} />
       <Outlet context={[setLoginUser, loginUser, setDespositPopUp, depositPopUp]} />
       <Footer />
     </div>

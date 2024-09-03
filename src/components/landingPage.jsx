@@ -1,19 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, useOutlet, useOutletContext } from 'react-router-dom'
 import Sidebar from './sidebar'
-import Deposit from './deposit/deposit'
-import BtcDeposit from './deposit/btcDeposit'
-import TokenDeposit from './deposit/tokenDeposit'
-import Withdraw from './withdraw/withdraw'
-import BtcWithdraw from './withdraw/btcWithdraw'
-import TokenWithdraw from './withdraw/tokenWithdraw'
 import { motion } from 'framer-motion';
-// Animation variants
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
 };
-
 const imageVariants = {
   hidden: { scale: 0.8, opacity: 0 },
   visible: { scale: 1, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
@@ -99,27 +90,6 @@ function LandingPage() {
     }
   }, [divBanner, bannerCurrentImg])
 
-  const [btcDepositPopUp, setBtcDespositPopUp] = useState(false)
-  const [TokenDepositPopUp, setTokenDespositPopUp] = useState(false)
-
-  const [withDraw, setWithdraw] = useState('')
-
-  const outlet = useOutletContext()
-
-  useEffect(() => {
-    if (btcDepositPopUp || TokenDepositPopUp || withDraw !== '' || outlet[3]) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [btcDepositPopUp, TokenDepositPopUp, withDraw, outlet]);
-
-  const [coinsDeposit, setCoinsDeposit] = useState('')
-  const [saveCoinName, setSaveCoinName] = useState('')
-
   return (
     <>
       <motion.div
@@ -128,45 +98,6 @@ function LandingPage() {
         animate="visible"
         variants={containerVariants}
       >
-        {/* deposit */}
-        {outlet[3] && (
-          <Deposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={outlet[2]} setWithdraw={setWithdraw} setTokenDespositPopUp={setTokenDespositPopUp} setSaveCoinName={setSaveCoinName} deposit={outlet[3]} withDraw={withDraw} />
-        )}
-
-        {coinsDeposit == 'bitcoin' && (
-          <BtcDeposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={outlet[2]} setTokenDespositPopUp={setTokenDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} coinsDeposit={coinsDeposit} />
-        )}
-
-        {coinsDeposit == 'ethereum' && (
-          <BtcDeposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={outlet[2]} setTokenDespositPopUp={setTokenDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} />
-        )}
-
-        {coinsDeposit == 'litecoin' && (
-          <BtcDeposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={outlet[2]} setTokenDespositPopUp={setTokenDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} />
-        )}
-
-        {coinsDeposit == 'solana' && (
-          <BtcDeposit setCoinsDeposit={setCoinsDeposit} setDespositPopUp={outlet[2]} setTokenDespositPopUp={setTokenDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} />
-        )}
-
-        {coinsDeposit == 'erc' && (
-          <TokenDeposit setCoinsDeposit={setCoinsDeposit} coinsDeposit={coinsDeposit} setTokenDespositPopUp={setTokenDespositPopUp} setDespositPopUp={outlet[2]} setWithdraw={setWithdraw} saveCoinName={saveCoinName} />
-        )}
-
-        {TokenDepositPopUp && (
-          <TokenDeposit setCoinsDeposit={setCoinsDeposit} coinsDeposit={coinsDeposit} setTokenDespositPopUp={setTokenDespositPopUp} setDespositPopUp={outlet[2]} setWithdraw={setWithdraw} saveCoinName={saveCoinName} deposit={outlet[3]} TokenDepositPopUp={TokenDepositPopUp} />
-        )}
-        {/* deposit */}
-        {/* withdraw */}
-        {withDraw === 'withdraw' && <Withdraw withDraw={withDraw} setWithdraw={setWithdraw} setDespositPopUp={outlet[2]} setSaveCoinName={setSaveCoinName} />}
-        {withDraw === 'bitcoin' && <BtcWithdraw setWithdraw={setWithdraw} setDespositPopUp={outlet[2]} withDraw={withDraw} />}
-        {withDraw === 'ethereum' && <BtcWithdraw setWithdraw={setWithdraw} setDespositPopUp={outlet[2]} withDraw={withDraw} />}
-        {withDraw === 'litecoin' && <BtcWithdraw setWithdraw={setWithdraw} setDespositPopUp={outlet[2]} withDraw={withDraw} />}
-        {withDraw === 'solana' && <BtcWithdraw setWithdraw={setWithdraw} setDespositPopUp={outlet[2]} withDraw={withDraw} />}
-        {withDraw === 'erc' && <TokenWithdraw setWithdraw={setWithdraw} setDespositPopUp={outlet[2]} saveCoinName={saveCoinName} withDraw={withDraw} />}
-        {withDraw === 'tokenwithdraw' && <TokenWithdraw setWithdraw={setWithdraw} setDespositPopUp={outlet[2]} saveCoinName={saveCoinName} withDraw={withDraw} />}
-        {/* withdraw */}
-
         <div className='flex flex-col md:flex-row justify-between md:pr-10 my-4 md:py-5 gap-5 md:gap-10 lg:gap-12'>
           <Sidebar />
           <div className='md:w-[88%] md:mx-auto '>
@@ -222,4 +153,4 @@ function LandingPage() {
   )
 }
 
-export default LandingPage;
+export default LandingPage

@@ -9,7 +9,7 @@ const AdminPanel = () => {
   const [setting, setSetting] = useState(false)
 
   return  (
-    <div className="flex flex-col sm:flex-row min-h-screen bg-gray-100 sm:mb-4 mb-12">
+    <div className="flex flex-col sm:flex-row min-h-screen bg-[#131620] sm:mb-4 mb-12">
       <div className="relative">
         {setting && (
           <SettingPortal>
@@ -23,14 +23,15 @@ const AdminPanel = () => {
         animate={{ x: 0 }}
         transition={{ type: 'spring', stiffness: 80 }}
       >
-        <div className="flex sm:flex-col flex-row items-center justify-between sm:justify-center mt-4 sm:mt-10 mb-4">
-          <div className="md:text-2xl ml-32 sm:ml-2 text-lg font-medium sm:font-bold">
-            Admin Panel
-          </div>
+        <div className="flex sm:flex-col flex-row items-center justify-between sm:justify-center mt-0 sm:mt-10 mb-4">
+        <div className='flex items-center justify-between my-2 ml-32 sm:ml-0'>
+                                <img src="/logo.svg" alt="" className='sm:w-20 pt-1' />
+                           
+                            </div>
         </div>
         <div className="flex sm:flex-col flex-row sm:items-center items-start justify-between sm:justify-center px-4 sm:px-0">
           <motion.img
-            className="w-24 h-24 rounded-full object-cover"
+            className="sm:w-24 sm:h-24 w-24 h-24  rounded-full object-cover"
             src="https://via.placeholder.com/100"
             alt="User Avatar"
             initial={{ opacity: 0, scale: 0.5 }}
@@ -44,14 +45,14 @@ const AdminPanel = () => {
             <p className="text-sm text-gray-400 ">admin@example.com</p>
           </div>
         </div>
-        <nav className="sm:mt-10 mt-4 sm:ml-10 mb-6">
+        <nav className="sm:mt-7 mt-4 sm:ml-10 mb-6">
           <ul className="flex sm:flex-col flex-row justify-evenly text-center">
             <li className="mt-3 text-center">
               <a
                 href="/"
                 className="flex sm:w-[80%] items-center px-4 py-2 text-sm sm:text-xl font-medium hover:bg-yellow-400 hover:text-[#131620] rounded-md"
               >
-                <FaHome className="sm:mr-3 mr-2 sm:text-3xl text-xl" /> Home
+                <FaHome className="sm:mr-3 mr-2 sm:text-3xl text-yellow-400  text-xl" /> Home
               </a>
             </li>
             <li className="mt-3" onClick={() => setSetting(true)}>
@@ -59,7 +60,7 @@ const AdminPanel = () => {
                 href="#settings"
                 className="flex sm:w-[80%] items-center px-4 py-2 text-sm sm:text-xl font-medium hover:bg-yellow-400 hover:text-[#131620] rounded-md"
               >
-                <FaCog className="sm:mr-3 mr-2 sm:text-3xl text-xl" /> Settings
+                <FaCog className="sm:mr-3 mr-2 sm:text-3xl text-yellow-400 text-xl" /> Settings
               </a>
             </li>
           </ul>
@@ -78,15 +79,15 @@ const AdminPanel = () => {
     </div>
       </motion.aside>
       <div className="flex-1">
-        <header className="flex flex-row sm:flex-row items-center justify-between p-4 bg-[#131620] shadow-md">
+        <header className="flex flex-row sm:flex-row items-center justify-between p-4 bg-[#1f2331] sm:bg-[#131620] shadow-md">
           <div className="flex flex-col sm:flex-row items-center w-full sm:w-auto">
             <div className="relative mt-3 sm:mt-0 sm:ml-4 w-full sm:w-64">
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
-                className="sm:w-full w-auto pl-10 pr-4 py-2 text-sm bg-gray-100 rounded-full focus:outline-none"
+                className="sm:w-full w-auto bg-[#131620] text-gray-200 pl-10 pr-4 py-2 text-sm rounded-full focus:outline-none"
                 placeholder="Search..."
-              />
+              />  
             </div>
           </div>
           <div className="flex items-center justify-end w-80 sm:w-auto mt-2 sm:mt-0 space-x-4">
