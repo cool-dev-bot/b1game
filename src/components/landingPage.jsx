@@ -140,15 +140,15 @@ function LandingPage() {
             <div className='flex gap-8 overflow-hidden overflow-x-auto scrollbar-hide max-w-[1200px]'>
 
               <motion.div className='flex-shrink-0 w-[220px] sm:w-[250px] md:w-[300px] lg:w-[380px]' initial="hidden" animate="visible" variants={imageVariants}>
-                <img className='w-full' src="https://s3-alpha-sig.figma.com/img/b32d/ac1c/9211cd04c8565bdd28390d5edabdfb71?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MmizEmBkGSuHbraBYRyoOAA2~1VZTPz3DoxsYVvLVoU8-HH07o7OY6Puj4USky-BKA9KUF09JEfjUVYSrIrIwncFX5zxIB6T8giDiolkcrZJAB-3UIJhIb1KHOFmRDxCLlK4QKOr1xjWUGHXDtAwOJ6hcw4hll6j~FuOifdaWCHwUTj2nTzGDmKwSGoljtEu9fP~42MVKP9IP-Kad34VS28JryoEF4i3349Y8NB9oFr6IYhpev~XEOtjWkY7VaSVvJmJ~OS7hqUBYUEt3VHk-VPNBSt3YzCU0QmWjNZcM8~isKyYN6WdACgbocXeUHxQqdgxBkYJ-2Isv0~gH6AGtg__" alt="" />
+                <img className='w-full' src="https://i.ibb.co/Lh1XkVs/9211cd04c8565bdd28390d5edabdfb71-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-i-W.png" alt="" />
               </motion.div>
 
               <motion.div className='flex-shrink-0 w-[220px] sm:w-[250px] md:w-[300px] lg:w-[380px]' initial="hidden" animate="visible" variants={imageVariants}>
-                <img className='w-full' src="https://s3-alpha-sig.figma.com/img/b32d/ac1c/9211cd04c8565bdd28390d5edabdfb71?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MmizEmBkGSuHbraBYRyoOAA2~1VZTPz3DoxsYVvLVoU8-HH07o7OY6Puj4USky-BKA9KUF09JEfjUVYSrIrIwncFX5zxIB6T8giDiolkcrZJAB-3UIJhIb1KHOFmRDxCLlK4QKOr1xjWUGHXDtAwOJ6hcw4hll6j~FuOifdaWCHwUTj2nTzGDmKwSGoljtEu9fP~42MVKP9IP-Kad34VS28JryoEF4i3349Y8NB9oFr6IYhpev~XEOtjWkY7VaSVvJmJ~OS7hqUBYUEt3VHk-VPNBSt3YzCU0QmWjNZcM8~isKyYN6WdACgbocXeUHxQqdgxBkYJ-2Isv0~gH6AGtg__" alt="" />
+                <img className='w-full' src="https://i.ibb.co/cwYBMZJ/ad84040847dd91cc99174f9a355b9579-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-KIM.png" alt="" />
               </motion.div>
 
               <motion.div className='flex-shrink-0 w-[220px] sm:w-[250px] md:w-[300px] lg:w-[380px]' initial="hidden" animate="visible" variants={imageVariants}>
-                <img className='w-full' src="https://s3-alpha-sig.figma.com/img/b32d/ac1c/9211cd04c8565bdd28390d5edabdfb71?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MmizEmBkGSuHbraBYRyoOAA2~1VZTPz3DoxsYVvLVoU8-HH07o7OY6Puj4USky-BKA9KUF09JEfjUVYSrIrIwncFX5zxIB6T8giDiolkcrZJAB-3UIJhIb1KHOFmRDxCLlK4QKOr1xjWUGHXDtAwOJ6hcw4hll6j~FuOifdaWCHwUTj2nTzGDmKwSGoljtEu9fP~42MVKP9IP-Kad34VS28JryoEF4i3349Y8NB9oFr6IYhpev~XEOtjWkY7VaSVvJmJ~OS7hqUBYUEt3VHk-VPNBSt3YzCU0QmWjNZcM8~isKyYN6WdACgbocXeUHxQqdgxBkYJ-2Isv0~gH6AGtg__" alt="" />
+                <img className='w-full' src="https://i.ibb.co/Lh1XkVs/9211cd04c8565bdd28390d5edabdfb71-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-i-W.png" alt="" />
               </motion.div>
 
             </div>
@@ -161,4 +161,4 @@ function LandingPage() {
   )
 }
 
-export default LandingPage;
+export default LandingPage
