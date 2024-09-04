@@ -19,15 +19,15 @@ const SettingsLayout = ({ setSetting }) => {
       </div>
       <div className="flex flex-row justify-between bg-[#CBD7FF08] h-auto mb-4">
         <div onClick={() => setSettingOption('basic')} className="flex-1 text-gray-300 flex flex-col items-center text-md sm:text-lg hover:shadow-2xl hover:bg-yellow-400 hover:text-gray-800 p-4 rounded-lg text-center cursor-pointer">
-          <img src="/public/settingCompo/Basic-gray.svg" alt="Basic" className="mb-1 h-6 md:h-8 sm:mb-1" />
+          <img src="https://i.ibb.co/ys4P24w/Vector.png" alt="Basic" className="mb-1 h-6 md:h-8 sm:mb-1" />
           <p className=''>Basic</p>
         </div>
         <div onClick={() => setSettingOption('security')} className="flex-1 text-gray-300 flex flex-col items-center text-md sm:text-lg hover:shadow-2xl hover:bg-yellow-400 hover:text-gray-800 p-4 rounded-lg text-center cursor-pointer">
-          <img src="/public/settingCompo/Sequrity.svg" alt="Security" className="mb-1 h-6 md:h-8 sm:mb-1" />
+          <img src="https://i.ibb.co/gjyKWzP/Group.png" alt="Security" className="mb-1 h-6 md:h-8 sm:mb-1" />
           <p>Security</p>
         </div>
         <div onClick={() => setSettingOption('personal')} className="flex-1 text-gray-300 flex flex-col items-center text-md sm:text-lg hover:shadow-2xl hover:bg-yellow-400 hover:text-gray-800 p-4 rounded-lg text-center cursor-pointer">
-          <img src="/public/settingCompo/persnal-info.svg" alt="Personal Information" className="mb-1 h-6 md:h-8 sm:mb-1" />
+          <img src="https://i.ibb.co/3yBGHt6/Vector2.png" alt="Personal Information" className="mb-1 h-6 md:h-8 sm:mb-1" />
           <p>Personal Info.</p>
         </div>
       </div>

@@ -47,7 +47,7 @@ const BasicSettings = ({ setSetting }) => {
           className="flex items-center"
           whileHover={{ scale: 1.1 }}
         >
-          <img src="/public/settingCompo/USDT.svg" alt="" className="w-8 h-8 mr-2" />
+          <img src="https://i.ibb.co/bJWnhnt/Vector4.png" alt="" className="w-8 h-8 mr-2" />
           <p>USDT</p>
         </motion.div>
         <button
@@ -82,7 +82,7 @@ const BasicSettings = ({ setSetting }) => {
           onClick={toggleDropdown}
           whileHover={{ scale: 1.05 }}
         >
-          <img src="/path/to/flag.png" alt="Selected Language Flag" className="w-6 h-4 mr-2" />
+          <img src="https://i.ibb.co/FWdSmyg/Clip-path-group.png" alt="Selected Language Flag" className="w-6 h-4 mr-2" />
           <span>{selectedLanguage}</span>
           <FaAngleDown className="ml-auto" />
         </motion.button>
@@ -100,7 +100,7 @@ const BasicSettings = ({ setSetting }) => {
                 whileHover={{ backgroundColor: "#2c2f35" }}
               >
                 <img src="/path/to/us-flag.png" alt="US Flag" className="w-6 h-4 mr-2" />
-                <span>US English</span>
+                <span>Uk English</span>
               </motion.li>
               <motion.li
                 className="flex items-center p-2 bg-gray-700 cursor-pointer"
@@ -108,7 +108,7 @@ const BasicSettings = ({ setSetting }) => {
                 whileHover={{ backgroundColor: "#2c2f35" }}
               >
                 <img src="/path/to/uk-flag.png" alt="UK Flag" className="w-6 h-4 mr-2" />
-                <span>UK English</span>
+                <span>Us English</span>
               </motion.li>
               <motion.li
                 className="flex items-center p-2 bg-gray-700 cursor-pointer"
