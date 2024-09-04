@@ -1,13 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from './modal';
 import { RxCross2 } from 'react-icons/rx';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp({ setSignUpPopUp, setLoginPopUp }) {
+    const navigate = useNavigate();
 
     function handleLogin() {
-        setSignUpPopUp(false)
-        setLoginPopUp(true)
+        setSignUpPopUp(false);
+        setLoginPopUp(true);
     }
+
+    const validationSchema = Yup.object({
+        name: Yup.string().required('Username is required'),
+        email: Yup.string()
+            .email('Invalid email address')
+            .required('Email is required'),
+        password: Yup.string().required('Password is required'),
+        check: Yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
+    });
+
+    const [errorUserExist, setErrorUserExist] = useState('')
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            password: '',
+            check: false,
+        },
+        validationSchema: validationSchema,
+        onSubmit: async (values) => {
+            try {
+                const object = {
+                    name: values.name,
+                    email: values.email,
+                    password: values.password,
+                };
+                console.log(object);
+                const res = await axios.post("http://localhost:5000/api/users/signup", object);
+                console.log(res.data.data);
+                if (res.data.data.user) {
+                    setLoginPopUp(true);
+                    setSignUpPopUp(false);
+                }
+            } catch (error) {
+                console.log(error)
+                setErrorUserExist(error.response.data.err)
+                console.log(
+                    "Failed to submit project:",
+                    error.response ? error.response.data : error.message
+                );
+            }
+        },
+    });
 
     return (
         <Modal onClose={() => setSignUpPopUp(false)}>
@@ -39,48 +88,76 @@ function SignUp({ setSignUpPopUp, setLoginPopUp }) {
                         <div className="w-20 md:w-36 h-[2px] bg-grad"></div>
                     </div>
 
-                    <div className='w-[50vw] mx-auto md:w-full'>
-                        <div className='mb-3'>
-                            <label htmlFor="username" className='text-[#818E9D] text-sm'>Username</label>
-                            <input
-                                className="w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] borderplaceholder-gray-500 text-xs md:text-sm outline-none text-white"
-                                type="name" id='username'
-                            />
-                        </div>
+                    <form onSubmit={formik.handleSubmit}>
+                        <div className='w-[50vw] mx-auto md:w-full'>
+                            <p className='text-red-500 text-sm'>{errorUserExist}</p>
+                            <div className='mb-3'>
+                                <label htmlFor="name" className='text-[#818E9D] text-sm'>Username</label>
+                                <input
+                                    className={`w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] borderplaceholder-gray-500 text-xs md:text-sm outline-none text-white ${formik.errors.name && formik.touched.name ? 'border-red-500' : ''}`}
+                                    {...formik.getFieldProps('name')}
+                                    type="text"
+                                    id='name'
+                                />
+                                {formik.touched.name && formik.errors.name ? (
+                                    <div className="text-red-500 text-xs mt-1">{formik.errors.name}</div>
+                                ) : null}
+                            </div>
 
-                        <div className='mb-3'>
-                            <label htmlFor="password" className='text-[#818E9D] text-sm'>Password</label>
-                            <input
-                                className="w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] borderplaceholder-gray-500 text-xs md:text-sm outline-none text-white"
-                                type="password" id='password'
-                            />
-                        </div>
+                            <div className='mb-3'>
+                                <label htmlFor="email" className='text-[#818E9D] text-sm'>Email</label>
+                                <input
+                                    className={`w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] borderplaceholder-gray-500 text-xs md:text-sm outline-none text-white ${formik.errors.email && formik.touched.email ? 'border-red-500' : ''}`}
+                                    {...formik.getFieldProps('email')}
+                                    type="email"
+                                    id='email'
+                                />
+                                {formik.touched.email && formik.errors.email ? (
+                                    <div className="text-red-500 text-xs mt-1">{formik.errors.email}</div>
+                                ) : null}
+                            </div>
 
-                        <div className='mb-3'>
-                            <label htmlFor="email" className='text-[#818E9D] text-sm'>Email</label>
-                            <input
-                                className="w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] borderplaceholder-gray-500 text-xs md:text-sm outline-none text-white"
-                                type="email" id='email'
-                            />
-                        </div>
+                            <div className='mb-3'>
+                                <label htmlFor="password" className='text-[#818E9D] text-sm'>Password</label>
+                                <input
+                                    className={`w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] borderplaceholder-gray-500 text-xs md:text-sm outline-none text-white ${formik.errors.password && formik.touched.password ? 'border-red-500' : ''}`}
+                                    {...formik.getFieldProps('password')}
+                                    type="password"
+                                    id='password'
+                                />
+                                {formik.touched.password && formik.errors.password ? (
+                                    <div className="text-red-500 text-xs mt-1">{formik.errors.password}</div>
+                                ) : null}
+                            </div>
 
-                        <div className='mt-3'>
-                            <label className="flex items-start space-x-2">
-                                <input type="checkbox" className="form-checkbox rounded-lg h-4 w-4 md:h-5 md:w-5 text-blue-600 bg-[#22232F] border-gray-300 focus:ring-blue-500 focus:ring-2" name='check' />
-                                <p id='check' className='text-xs md:text-sm text-[#818E9D]'>I certify that I am at least 18 years of age and I agree to the <span className='text-white'>Terms of Service</span></p>
-                            </label>
-                        </div>
+                            <div className='mt-3'>
+                                <label className="flex items-start space-x-2">
+                                    <input
+                                        type="checkbox"
+                                        className="form-checkbox rounded-lg h-4 w-4 md:h-5 md:w-5 text-blue-600 bg-[#22232F] border-gray-300 focus:ring-blue-500 focus:ring-2"
+                                        {...formik.getFieldProps('check')}
+                                    />
+                                    <p id='check' className='text-xs md:text-sm text-[#818E9D]'>I certify that I am at least 18 years of age and I agree to the <span className='text-white'>Terms of Service</span></p>
+                                </label>
+                                {formik.touched.check && formik.errors.check ? (
+                                    <div className="text-red-500 text-xs mt-1">{formik.errors.check}</div>
+                                ) : null}
+                            </div>
 
-                        <div className='mt-3'>
-                            <label className="flex items-start space-x-2">
-                                <input type="checkbox" className="form-checkbox rounded-lg h-4 w-4 md:h-5 md:w-5 text-blue-600 bg-[#22232F] border-gray-300 focus:ring-blue-500 focus:ring-2" name='check' />
-                                <p id='check' className='text-xs md:text-sm text-[#818E9D]'>I want to receive <span className='text-white'>News and Offers</span></p>
-                            </label>
-                        </div>
+                            <div className='mt-3'>
+                                <label className="flex items-start space-x-2">
+                                    <input
+                                        type="checkbox"
+                                        className="form-checkbox rounded-lg h-4 w-4 md:h-5 md:w-5 text-blue-600 bg-[#22232F] border-gray-300 focus:ring-blue-500 focus:ring-2"
+                                    />
+                                    <p id='check' className='text-xs md:text-sm text-[#818E9D]'>I want to receive <span className='text-white'>News and Offers</span></p>
+                                </label>
+                            </div>
 
-                        <button className='bg-[#FFC701] mt-4 mb-2 text-center w-full py-2 md:py-2.5 rounded-md text-sm md:text-base'>Start Playing</button>
-                        <p className='text-center text-xs md:text-sm text-[#818E9D]'>Already have an account? <button className='text-white' onClick={() => handleLogin()}>Login</button></p>
-                    </div>
+                            <button type="submit" className='bg-[#FFC701] mt-4 mb-2 text-center w-full py-2 md:py-2.5 rounded-md text-sm md:text-base'>Start Playing</button>
+                            <p className='text-center text-xs md:text-sm text-[#818E9D]'>Already have an account? <button className='text-white' onClick={() => handleLogin()}>Login</button></p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </Modal>

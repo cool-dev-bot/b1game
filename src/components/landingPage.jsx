@@ -1,156 +1,163 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Sidebar from './sidebar'
-import { motion } from 'framer-motion';
-const containerVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-};
-const imageVariants = {
-  hidden: { scale: 0.8, opacity: 0 },
-  visible: { scale: 1, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
-};
-function LandingPage() {
+import React, { useState } from 'react';
+import Modal from './modal';
+import { RxCross2 } from 'react-icons/rx';
+import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
-  const banner = [
-    {
-      img: 'https://i.ibb.co/fGfQhTc/edd742732116b345cc773be9d02d8f95.png'
-    },
+function Login({ setLoginPopUp, setForgotPass, setSignUpPopUp, setLoginUser }) {
+    const navigate = useNavigate();
 
-    {
-      img: 'public/banner-main.svg'
-    },
-
-    {
-      img: 'public/banner-main.svg'
-    },
-  ]
-  const gamesPoster = [
-    {
-      img: 'public/slider-1.svg',
-
-    },
-
-    {
-      img: 'https://i.ibb.co/fGfQhTc/edd742732116b345cc773be9d02d8f95.png',
-
-    },
-    {
-      img: 'public/slider-3.svg',
-    },
-
-    {
-      img: 'public/slider-4.svg',
-    },
-    {
-      img: 'public/slider-5.svg',
-    },
-    {
-      img: 'public/slider-6.svg',
-    },
-
-  ]
-
-  const [bannerCurrentImg, setBannerCurrentImg] = useState(0)
-  const [bannerWidth, setBannerWidth] = useState(1200)
-
-  function handleNext() {
-    if (bannerCurrentImg < banner.length - 1) {
-      setBannerCurrentImg(prev => prev + 1)
-    } else {
-      setBannerCurrentImg(0)
+    function handleSignUp() {
+        setSignUpPopUp(true);
+        setLoginPopUp(false);
     }
-  }
 
-  function handlePrev() {
-    if (bannerCurrentImg > 0) {
-      setBannerCurrentImg(prev => prev - 1)
-    } else {
-      setBannerCurrentImg(banner.length - 1)
+    function handleForgotPass() {
+        setForgotPass(true);
+        setLoginPopUp(false);
     }
-  }
 
-  const divBanner = useRef()
+    const validationSchema = Yup.object({
+        email: Yup.string().email('Invalid email address').required('Email is required'),
+        password: Yup.string().required('Password is required'),
+        remember: Yup.boolean(),
+    });
 
-  useEffect(() => {
-    let intervalId = setInterval(() => {
-      if (bannerCurrentImg < banner.length - 1) {
-        setBannerCurrentImg(prev => prev + 1)
-      } else {
-        setBannerCurrentImg(0)
-      }
-    }, 1000)
+    const [passwordError, setPasswordError] = useState('')
 
-    return (() => clearInterval(intervalId))
-  }, [banner])
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+            remember: false,
+        },
+        validationSchema: validationSchema,
+        onSubmit: async (values, { setErrors }) => {
+            try {
+                const object = {
+                    email: values.email,
+                    password: values.password,
+                };
+                console.log(object);
+                const res = await axios.post("http://localhost:5000/api/users/login", object);
+                console.log(res.data.data);
+                if (res.data.data) {
+                    setLoginUser(res.data.data); // Assuming you have a method to set the logged-in user
+                    navigate("/");
+                    setLoginPopUp(false);
+                }
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    const { errors } = error.response.data; // Assuming server returns { errors: { field: "error message" } }
+                    setPasswordError('Please Enter Right Password')
+                    if (errors) {
+                        setErrors(errors); // Set form errors for Formik to display
+                    } else {
+                        console.log("Error:", error.response.data.message || error.message);
+                    }
+                } else {
+                    console.log("Failed to submit:", error.message);
+                }
+            }
+        },
+    });
 
+    return (
+        <Modal onClose={() => setLoginPopUp(false)}>
+            <div className='bg-[#131620] mx-auto p-4 md:p-5'>
+                <div className='flex flex-col md:flex-row justify-end items-center md:items-start gap-4 md:gap-8 md:mx-6 mt-4 w-[700px] mx-auto'>
+                    <div className='w-full max-w-[250px] md:max-w-[370px] hidden md:block absolute -left-2 top-5 lg:-left-16 lg:top-4'>
+                        <img className='object-cover' src="/dice.png" alt="Dice" />
+                    </div>
 
-  useEffect(() => {
-    if (divBanner.current) {
-      setBannerWidth(divBanner.current.offsetWidth)
-    }
-  }, [divBanner, bannerCurrentImg])
+                    <div className='w-full max-w-xs sm:max-w-sm md:max-w-sm relative'>
+                        <button
+                            onClick={() => setLoginPopUp(false)}
+                            className="absolute top-0 right-7 md:-top-4 md:-right-5 text-white text-2xl md:text-4xl font-light bg-[#22232F] p-2 md:p-3 rounded-full"
+                        >
+                            <RxCross2 size={24} />
+                        </button>
+                        <div className='flex flex-col items-center'>
+                            <div>
+                                <img src="/logo.svg" alt="" className='w-20 md:w-24' />
+                            </div>
+                            <p className='text-white mt-2 text-sm md:text-base'>Log Into Your Account</p>
+                            <div className='mt-3 cursor-pointer'>
+                                <img src="/signUp/google.svg" alt="" className='w-7 md:w-9' />
+                            </div>
+                        </div>
 
-  return (
-    <>
-      <motion.div
-        className="max-w-[1500px] mx-auto font-['oswald'] px-3 sm:px-4 md:px-8"
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
-        <div className='flex flex-col md:flex-row justify-between md:pr-10 my-4 md:py-5 gap-5 md:gap-10 lg:gap-12'>
-          <Sidebar />
-          <div className='md:w-[88%] md:mx-auto '>
-            <div className='relative w-full'>
-              {/* Navigation Buttons */}
-              <button className='absolute top-[4.3rem] -left-5 transform -translate-y-1/2 cursor-pointer md:block hidden z-10' onClick={() => handlePrev()}>
-                <img src="public/banner-left.svg" alt="Previous" />
-              </button>
-              <button className='absolute top-[4.3rem] right-6 transform -translate-y-1/2 cursor-pointer md:block hidden z-10' onClick={() => handleNext()}>
-                <img src="public/banner-right.svg" alt="Next" />
-              </button>
+                        <div className="flex items-center justify-center gap-2 mt-4 mb-2 text-[#818E9D]">
+                            <div className="w-20 md:w-36 h-[2px] bg-grad"></div>
+                            <p>OR</p>
+                            <div className="w-20 md:w-36 h-[2px] bg-grad"></div>
+                        </div>
 
-              {/* Image Slider */}
-              <div className='flex max-w-[1200px] overflow-hidden pb-4 rounded-lg ' ref={divBanner}>
-                {banner.map((item, idx) => (
-                  <motion.img
-                    className={`md:w-full md:h-[140px] object-contain md:object-cover banner transition-all flex-shrink-0 rounded-lg`}
-                    style={{ transform: `translateX(-${bannerCurrentImg * bannerWidth}px)` }}
-                    src={item.img}
-                    alt={`Banner ${idx}`}
-                    key={idx}
-                    initial="hidden"
-                    animate="visible"
-                    variants={imageVariants}
-                  />
-                ))}
-              </div>
+                        <form onSubmit={formik.handleSubmit}>
+                            <div className='w-[50vw] mx-auto md:w-full'>
+                                <div className='mb-3'>
+                                    <label htmlFor="email" className='text-[#818E9D] text-sm'>Email</label>
+                                    <input
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.email}
+                                        className={`w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] placeholder-gray-500 text-xs md:text-sm outline-none text-white ${formik.touched.email && formik.errors.email ? 'border-red-500' : ''}`}
+                                        type="email"
+                                        name='email'
+                                        id='email'
+                                    />
+                                    {formik.touched.email && formik.errors.email ? (
+                                        <div className="text-red-500 text-xs mt-1">{formik.errors.email}</div>
+                                    ) : null}
+                                </div>
+
+                                <div className='mb-3'>
+                                    <label htmlFor="password" className='text-[#818E9D] text-sm'>Password</label>
+                                    <input
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.password}
+                                        className={`w-full mt-1 px-3 py-2 rounded-md font-medium bg-[#22232F] placeholder-gray-500 text-xs md:text-sm outline-none text-white ${formik.touched.password && formik.errors.password ? 'border-red-500' : ''}`}
+                                        type="password"
+                                        name='password'
+                                        id='password'
+                                    />
+                                    {formik.touched.password && formik.errors.password ? (
+                                        <div className="text-red-500 text-xs mt-1">{formik.errors.password}</div>
+                                    ) : null}
+                                    <p className="text-red-500 text-xs mt-1">{passwordError}</p>
+                                    <button onClick={() => handleForgotPass()} className='text-white text-xs md:text-sm mt-2'>Forgot your Password?</button>
+                                </div>
+
+                                <div className='mt-3'>
+                                    <label className="flex items-center space-x-2">
+                                        <input
+                                            value={formik.values.remember}
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
+                                            type="checkbox"
+                                            className="form-checkbox rounded-lg h-4 w-4 md:h-5 md:w-5 text-blue-600 bg-[#22232F] border-gray-300 focus:ring-blue-500 focus:ring-2"
+                                            name='remember'
+                                        />
+                                        <p id='remember' className='text-xs md:text-sm text-[#818E9D]'>Remember Me</p>
+                                    </label>
+                                </div>
+
+                                <button type="submit" className='bg-[#FFC701] mt-6 mb-4 text-center w-full py-2 md:py-2.5 rounded-md text-sm md:text-base font-semibold'>
+                                    Log In
+                                </button>
+                                <p className='text-center text-xs md:text-sm text-[#818E9D]'>
+                                    Don't have an account? <button className='text-white' onClick={() => handleSignUp()}>Sign Up</button>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            {/* updated */}
-            <div className='flex mt-6 gap-x-4 mb-12 lg:mb-16 w-full max-w-[1200px] overflow-x-auto scrollbar-hide'>
-              {gamesPoster.map((item, idx) => (
-                <motion.div key={idx} className='flex-shrink-0 w-[220px] sm:w-[200px] md:w-[250px] lg:w-[300px]' initial="hidden" animate="visible" variants={imageVariants}>
-                  <img className='w-full h-auto object-cover' src={item.img} alt={`Game poster ${idx}`} />
-                </motion.div>
-              ))}
-            </div>
-            {/* updated */}
-
-            <div className='flex gap-8 overflow-hidden overflow-x-auto scrollbar-hide max-w-[1200px]'>
-              {[...Array(5)].map((_, idx) => (
-                <motion.div key={idx} className='flex-shrink-0 w-[220px] sm:w-[250px] md:w-[300px] lg:w-[380px]' initial="hidden" animate="visible" variants={imageVariants}>
-                  <img className='w-full' src="https://s3-alpha-sig.figma.com/img/b32d/ac1c/9211cd04c8565bdd28390d5edabdfb71?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MmizEmBkGSuHbraBYRyoOAA2~1VZTPz3DoxsYVvLVoU8-HH07o7OY6Puj4USky-BKA9KUF09JEfjUVYSrIrIwncFX5zxIB6T8giDiolkcrZJAB-3UIJhIb1KHOFmRDxCLlK4QKOr1xjWUGHXDtAwOJ6hcw4hll6j~FuOifdaWCHwUTj2nTzGDmKwSGoljtEu9fP~42MVKP9IP-Kad34VS28JryoEF4i3349Y8NB9oFr6IYhpev~XEOtjWkY7VaSVvJmJ~OS7hqUBYUEt3VHk-VPNBSt3YzCU0QmWjNZcM8~isKyYN6WdACgbocXeUHxQqdgxBkYJ-2Isv0~gH6AGtg__" alt="" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
-
-    </>
-  )
+        </Modal>
+    );
 }
 
-export default LandingPage
+export default Login;
