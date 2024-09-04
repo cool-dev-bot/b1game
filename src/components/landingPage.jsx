@@ -14,7 +14,7 @@ function LandingPage() {
   const banner = [
     
     {
-        img: ''
+        img: 'https://i.ibb.co/D9RXM55/5dee5480a617c1739caf572bd39ab961-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-H-z.jpg'
       },
     {
       img: 'https://i.ibb.co/hDfw4tZ/banner4-79a46718.jpg'
@@ -26,23 +26,23 @@ function LandingPage() {
   ]
   const gamesPoster = [
     {
-      img: 'public/slider-1.svg',
+      img: 'https://i.ibb.co/YpggccV/41b5d7ca2f0e5122f5540aaa34f0d195-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-R1.png',
 
     },
 
     {
-      img: 'https://i.ibb.co/fGfQhTc/edd742732116b345cc773be9d02d8f95.png',
+      img: 'https://i.ibb.co/TYCBd44/edd742732116b345cc773be9d02d8f95-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-h-A.png',
 
     },
     {
-      img: 'public/slider-3.svg',
+      img: 'https://i.ibb.co/G9HDSkR/9fdc801a2effc74f7b7d022c0f0f42b1-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-Z2.png',
     },
 
     {
-      img: 'public/slider-4.svg',
+      img: 'https://i.ibb.co/G9HDSkR/9fdc801a2effc74f7b7d022c0f0f42b1-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-Z2.png',
     },
     {
-      img: 'public/slider-5.svg',
+      img: 'https://i.ibb.co/Lh1XkVs/9211cd04c8565bdd28390d5edabdfb71-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-i-W.png',
     },
     {
       img: 'public/slider-6.svg',
