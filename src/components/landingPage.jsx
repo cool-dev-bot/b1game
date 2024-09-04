@@ -12,16 +12,16 @@ const imageVariants = {
 function LandingPage() {
 
   const banner = [
+    
     {
-      img: ''
+        img: ''
+      },
+    {
+      img: 'https://i.ibb.co/hDfw4tZ/banner4-79a46718.jpg'
     },
 
     {
-      img: 'public/banner-main.svg'
-    },
-
-    {
-      img: 'public/banner-main.svg'
+      img: 'https://i.ibb.co/hDfw4tZ/banner4-79a46718.jpg'
     },
   ]
   const gamesPoster = [

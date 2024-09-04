@@ -41,7 +41,7 @@ function SignUp({ setSignUpPopUp, setLoginPopUp }) {
                     password: values.password,
                 };
                 console.log(object);
-                const res = await axios.post("http://localhost:5000/api/users/signup", object);
+                const res = await axios.post("https://roulette-backend-pearl.vercel.app/api/users/signup", object);
                 console.log(res.data.data);
                 if (res.data.data.user) {
                     setLoginPopUp(true);
