@@ -12,10 +12,10 @@ const imageVariants = {
 function LandingPage() {
 
   const banner = [
-    
+
     {
-        img: 'https://i.ibb.co/D9RXM55/5dee5480a617c1739caf572bd39ab961-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-H-z.jpg'
-      },
+      img: 'https://i.ibb.co/D9RXM55/5dee5480a617c1739caf572bd39ab961-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-H-z.jpg'
+    },
     {
       img: 'https://i.ibb.co/hDfw4tZ/banner4-79a46718.jpg'
     },
@@ -45,8 +45,12 @@ function LandingPage() {
       img: 'https://i.ibb.co/Lh1XkVs/9211cd04c8565bdd28390d5edabdfb71-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-i-W.png',
     },
     {
-      img: 'public/slider-6.svg',
+      img: 'https://i.ibb.co/cwYBMZJ/ad84040847dd91cc99174f9a355b9579-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-KIM.png',
+    }, {
+      img: 'https://i.ibb.co/Lh1XkVs/9211cd04c8565bdd28390d5edabdfb71-Expires-1726444800-Key-Pair-Id-APKAQ4-GOSFWCVNEHN3-O4-Signature-i-W.png',
     },
+
+
 
   ]
 
@@ -114,14 +118,10 @@ function LandingPage() {
               <div className='flex max-w-[1200px] overflow-hidden pb-4 rounded-lg ' ref={divBanner}>
                 {banner.map((item, idx) => (
                   <motion.img
-                    className={`md:w-full md:h-[140px] object-contain md:object-cover banner transition-all flex-shrink-0 rounded-lg`}
+                    className="md:w-full md:h-[140px] object-contain md:object-cover banner transition-all flex-shrink-0 rounded-lg"
                     style={{ transform: `translateX(-${bannerCurrentImg * bannerWidth}px)` }}
                     src={item.img}
                     alt={`Banner ${idx}`}
-                    key={idx}
-                    initial="hidden"
-                    animate="visible"
-                    variants={imageVariants}
                   />
                 ))}
               </div>
@@ -138,11 +138,19 @@ function LandingPage() {
             {/* updated */}
 
             <div className='flex gap-8 overflow-hidden overflow-x-auto scrollbar-hide max-w-[1200px]'>
-              {[...Array(5)].map((_, idx) => (
-                <motion.div key={idx} className='flex-shrink-0 w-[220px] sm:w-[250px] md:w-[300px] lg:w-[380px]' initial="hidden" animate="visible" variants={imageVariants}>
-                  <img className='w-full' src="https://s3-alpha-sig.figma.com/img/b32d/ac1c/9211cd04c8565bdd28390d5edabdfb71?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MmizEmBkGSuHbraBYRyoOAA2~1VZTPz3DoxsYVvLVoU8-HH07o7OY6Puj4USky-BKA9KUF09JEfjUVYSrIrIwncFX5zxIB6T8giDiolkcrZJAB-3UIJhIb1KHOFmRDxCLlK4QKOr1xjWUGHXDtAwOJ6hcw4hll6j~FuOifdaWCHwUTj2nTzGDmKwSGoljtEu9fP~42MVKP9IP-Kad34VS28JryoEF4i3349Y8NB9oFr6IYhpev~XEOtjWkY7VaSVvJmJ~OS7hqUBYUEt3VHk-VPNBSt3YzCU0QmWjNZcM8~isKyYN6WdACgbocXeUHxQqdgxBkYJ-2Isv0~gH6AGtg__" alt="" />
-                </motion.div>
-              ))}
+
+              <motion.div className='flex-shrink-0 w-[220px] sm:w-[250px] md:w-[300px] lg:w-[380px]' initial="hidden" animate="visible" variants={imageVariants}>
+                <img className='w-full' src="https://s3-alpha-sig.figma.com/img/b32d/ac1c/9211cd04c8565bdd28390d5edabdfb71?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MmizEmBkGSuHbraBYRyoOAA2~1VZTPz3DoxsYVvLVoU8-HH07o7OY6Puj4USky-BKA9KUF09JEfjUVYSrIrIwncFX5zxIB6T8giDiolkcrZJAB-3UIJhIb1KHOFmRDxCLlK4QKOr1xjWUGHXDtAwOJ6hcw4hll6j~FuOifdaWCHwUTj2nTzGDmKwSGoljtEu9fP~42MVKP9IP-Kad34VS28JryoEF4i3349Y8NB9oFr6IYhpev~XEOtjWkY7VaSVvJmJ~OS7hqUBYUEt3VHk-VPNBSt3YzCU0QmWjNZcM8~isKyYN6WdACgbocXeUHxQqdgxBkYJ-2Isv0~gH6AGtg__" alt="" />
+              </motion.div>
+
+              <motion.div className='flex-shrink-0 w-[220px] sm:w-[250px] md:w-[300px] lg:w-[380px]' initial="hidden" animate="visible" variants={imageVariants}>
+                <img className='w-full' src="https://s3-alpha-sig.figma.com/img/b32d/ac1c/9211cd04c8565bdd28390d5edabdfb71?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MmizEmBkGSuHbraBYRyoOAA2~1VZTPz3DoxsYVvLVoU8-HH07o7OY6Puj4USky-BKA9KUF09JEfjUVYSrIrIwncFX5zxIB6T8giDiolkcrZJAB-3UIJhIb1KHOFmRDxCLlK4QKOr1xjWUGHXDtAwOJ6hcw4hll6j~FuOifdaWCHwUTj2nTzGDmKwSGoljtEu9fP~42MVKP9IP-Kad34VS28JryoEF4i3349Y8NB9oFr6IYhpev~XEOtjWkY7VaSVvJmJ~OS7hqUBYUEt3VHk-VPNBSt3YzCU0QmWjNZcM8~isKyYN6WdACgbocXeUHxQqdgxBkYJ-2Isv0~gH6AGtg__" alt="" />
+              </motion.div>
+
+              <motion.div className='flex-shrink-0 w-[220px] sm:w-[250px] md:w-[300px] lg:w-[380px]' initial="hidden" animate="visible" variants={imageVariants}>
+                <img className='w-full' src="https://s3-alpha-sig.figma.com/img/b32d/ac1c/9211cd04c8565bdd28390d5edabdfb71?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MmizEmBkGSuHbraBYRyoOAA2~1VZTPz3DoxsYVvLVoU8-HH07o7OY6Puj4USky-BKA9KUF09JEfjUVYSrIrIwncFX5zxIB6T8giDiolkcrZJAB-3UIJhIb1KHOFmRDxCLlK4QKOr1xjWUGHXDtAwOJ6hcw4hll6j~FuOifdaWCHwUTj2nTzGDmKwSGoljtEu9fP~42MVKP9IP-Kad34VS28JryoEF4i3349Y8NB9oFr6IYhpev~XEOtjWkY7VaSVvJmJ~OS7hqUBYUEt3VHk-VPNBSt3YzCU0QmWjNZcM8~isKyYN6WdACgbocXeUHxQqdgxBkYJ-2Isv0~gH6AGtg__" alt="" />
+              </motion.div>
+
             </div>
           </div>
         </div>
