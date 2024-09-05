@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Modal from './modal';
 import { RxCross2 } from 'react-icons/rx';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { loginContext } from '../../context/context';
 
 function Login({ setLoginPopUp, setForgotPass, setSignUpPopUp, setLoginUser }) {
     const navigate = useNavigate();
+    const { setSaveUserInfo } = useContext(loginContext)
 
     function handleSignUp() {
         setSignUpPopUp(true);
@@ -42,7 +44,8 @@ function Login({ setLoginPopUp, setForgotPass, setSignUpPopUp, setLoginUser }) {
                 };
                 console.log(object);
                 const res = await axios.post("https://roulette-backend-pearl.vercel.app/api/users/login", object);
-                console.log(res.data.data);
+                setSaveUserInfo(res.data.token);
+                localStorage.setItem('userInfo', JSON.stringify(res.data.token))
                 if (res.data.data) {
                     setLoginUser(res.data.data); // Assuming you have a method to set the logged-in user
                     navigate("/");
