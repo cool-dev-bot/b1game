@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import SignUp from './signUp'
 import Login from './login';
@@ -10,6 +10,7 @@ import Withdraw from './withdraw/withdraw';
 import BtcWithdraw from './withdraw/btcWithdraw';
 import TokenWithdraw from './withdraw/tokenWithdraw';
 import TokenDeposit from './deposit/tokenDeposit';
+import { loginContext } from '../../context/context';
 
 function Header({ setLoginUser, loginUser, setDespositPopUp, depositPopUp }) {
 
@@ -17,6 +18,8 @@ function Header({ setLoginUser, loginUser, setDespositPopUp, depositPopUp }) {
     const [signUpPopUp, setSignUpPopUp] = useState(false)
     const [loginPopUp, setLoginPopUp] = useState(false)
     const [forgotPass, setForgotPass] = useState(false)
+
+    const { userDetails } = useContext(loginContext)
 
     const listVariants = {
         hidden: { opacity: 0 },
@@ -148,7 +151,7 @@ function Header({ setLoginUser, loginUser, setDespositPopUp, depositPopUp }) {
                 )}
 
                 {TokenDepositPopUp && (
-                    <TokenDeposit  setCoinsDeposit={setCoinsDeposit} coinsDeposit={coinsDeposit} setTokenDespositPopUp={setTokenDespositPopUp} setDespositPopUp={setDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} deposit={depositPopUp} TokenDepositPopUp={TokenDepositPopUp} />
+                    <TokenDeposit setCoinsDeposit={setCoinsDeposit} coinsDeposit={coinsDeposit} setTokenDespositPopUp={setTokenDespositPopUp} setDespositPopUp={setDespositPopUp} setWithdraw={setWithdraw} saveCoinName={saveCoinName} deposit={depositPopUp} TokenDepositPopUp={TokenDepositPopUp} />
                 )}
                 {/* deposit */}
                 {/* withdraw */}
@@ -204,12 +207,14 @@ function Header({ setLoginUser, loginUser, setDespositPopUp, depositPopUp }) {
                                     </select>
                                 </div>
 
-                                <div className='block sm:hidden'>
-                                    <div className='flex flex-col justify-center gap-2 items-start'>
-                                        <button onClick={handleToggleSignUp} className='bg-[#86F454] text-[#131620] text-sm py-2 md:py-3 px-4 rounded-[7px] mr-3 w-52'>SIGNUP</button>
-                                        <button onClick={handleToggleLogin} className='bg-[#FFC701] text-[#131620] text-sm py-2 md:py-3 px-4 rounded-[7px] w-52'>LOGIN IN</button>
+                                {
+                                    userDetails && userDetails._id ? '' : <div className='block sm:hidden'>
+                                        <div className='flex flex-col justify-center gap-2 items-start'>
+                                            <button onClick={handleToggleSignUp} className='bg-[#86F454] text-[#131620] text-sm py-2 md:py-3 px-4 rounded-[7px] mr-3 w-52'>SIGNUP</button>
+                                            <button onClick={handleToggleLogin} className='bg-[#FFC701] text-[#131620] text-sm py-2 md:py-3 px-4 rounded-[7px] w-52'>LOGIN IN</button>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </motion.div>
                         </motion.div >
                     )
@@ -263,7 +268,7 @@ function Header({ setLoginUser, loginUser, setDespositPopUp, depositPopUp }) {
                             </div>
 
                             {
-                                loginUser ? (
+                                userDetails && userDetails._id ? (
                                     <div className='flex items-start'>
                                         <div className='bg-[#363743] flex items-center gap-2 py-2 sm:py-2 px-1 sm:px-3 rounded-sm rounded-tr-none rounded-br-none sm:text-sm text-[0.9rem] cursor-pointer hover:border border-green-500 hover:border-x-2 hover:border-y-2'>
                                             <img src="/IfUserLogged/doller.svg" alt="" />
