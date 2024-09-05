@@ -12,9 +12,34 @@ const AdminPanel = () => {
   const [setting, setSetting] = useState(false);
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({})
-  // const [token, setToken] = useState(JSON.parse(localStorage.getItem('userInfo')))
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem('userInfo')))
+
+  async function handleGetUser() {
+    if (token) {
+      try {
+        // Set up the headers with the Bearer token
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        };
+        // Make the request with the configured headers
+        const res = await axios.get(`https://roulette-backend-pearl.vercel.app/api/users/me`, config);
+        // Log the response or handle it as needed
+        setUserDetails(res.data);
+      } catch (error) {
+        // Handle any errors that occur during the request
+        console.error('Error fetching user data:', error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    handleGetUser()
+  }, [token])
 
   function handleLogout() {
+    setUserDetails({})
     localStorage.removeItem("userInfo");
   }
 
@@ -49,9 +74,9 @@ const AdminPanel = () => {
           />
           <div className="sm:ml-0 ml-4">
             <h3 className="sm:mt-4 mt-8 font-light text-sm sm:text-lg text-center">
-              {userDetails.name}
+              {userDetails ? userDetails.name : 'userName'}
             </h3>
-            <p className="text-sm text-gray-400 text-center">{userDetails.email}</p>
+            <p className="text-sm text-gray-400 text-center">{userDetails ? userDetails.email : 'user Email'}</p>
           </div>
         </div>
         <nav className="sm:mt-7 mt-4 sm:ml-10 mb-6">
