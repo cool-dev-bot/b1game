@@ -46,12 +46,12 @@ function Footer() {
                     <div className="flex flex-col xl:flex-row gap-8 xl:gap-12">
                         {/* Company Info Section */}
                         <div className="text-[#666E97] xl:w-1/3 w-full">
-                            <img className="mb-8 xl:mb-12" src="/logo.svg" alt="Logo" />
+                            <img className="mb-6 w-12  md:w-20 md:xl:mb-12" src="/logo.svg" alt="Logo" />
 
-                            <p className="mb-4 xl:mb-7 uppercase text-sm xl:text-base">
+                            <p className="mb-4 text-[.7rem] xl:mb-7 uppercase  xl:text-base">
                                 A multi-award winning crypto casino. With a player-centric approach, b1 has its priority set on its community, ensuring an everlasting and endlessly entertaining gambling experience.
                             </p>
-                            <p className="uppercase text-sm xl:text-base">
+                            <p className="uppercase text-[.7rem] md:text-sm xl:text-base">
                                 Crypto trading is not gambling, and therefore not covered by our gaming license
                             </p>
                         </div>
@@ -60,19 +60,19 @@ function Footer() {
 
                         <div className=" flex flex-wrap xl:flex-nowrap  gap-8 xl:gap-16 text-[#666E97] xl:w-2/3 w-full">
                             <div>
-                                <h3 className="text-white text-lg xl:text-xl font-semibold">GAMES</h3>
+                                <h3 className="text-white text-[.9rem] md:text-lg xl:text-xl font-semibold">GAMES</h3>
                                 {/* <p className="my-2  text-[1rem]  xl:text-base">ROULETTE</p>
                                 <p className="my-2  text-[1rem]  xl:text-base">MINES</p> */}
                                 {
                                     footerData['games'].map((game, idx) => {
                                         return (
-                                            <p key={idx} className="my-2  text-[1rem] xl:text-base cursor-pointer hover:text-white transition-all">{game.game}</p>
+                                            <p key={idx} className="my-2 text-[.8rem]   xl:text-base cursor-pointer hover:text-white transition-all">{game.game}</p>
                                         )
                                     })
                                 }
                             </div>
                             <div>
-                                <h3 className="text-white text-lg xl:text-xl font-semibold">INFORMATION</h3>
+                                <h3 className="text-white text-[.9rem] xl:text-xl font-semibold">INFORMATION</h3>
                                 {/* <p className="my-2  text-[1rem]  xl:text-base">FAIRNESS</p>
                                 <p className="my-2  text-[1rem]  xl:text-base">TERMS OF SERVICE</p>
                                 <p className="my-2  text-[1rem]  xl:text-base">PRIVACY POLICY</p>
@@ -81,23 +81,23 @@ function Footer() {
                                 {
                                     footerData['INFORMATION'].map((info, idx) => {
                                         return (
-                                            <p key={idx} className="my-2 text-[1rem] xl:text-base cursor-pointer hover:text-white transition-all">{info.info}</p>
+                                            <p key={idx} className="my-2 text-[.8rem] xl:text-base cursor-pointer hover:text-white transition-all">{info.info}</p>
                                         )
                                     })
                                 }
                             </div>
                             <div>
-                                <h3 className="text-white text-lg xl:text-xl font-semibold">EVENTS</h3>
-                                <p className="my-2  text-[1rem] xl:text-base cursor-pointer hover:text-white transition-all">RACE</p>
-                                <p className="my-2  text-[1rem] xl:text-base cursor-pointer hover:text-white transition-all">REWARDS</p>
+                                <h3 className="text-white text-[.9rem] xl:text-xl font-semibold">EVENTS</h3>
+                                <p className="my-2  text-[.8rem] xl:text-base cursor-pointer hover:text-white transition-all">RACE</p>
+                                <p className="my-2  text-[.8rem] xl:text-base cursor-pointer hover:text-white transition-all">REWARDS</p>
                             </div>
                             <div>
-                                <h3 className="text-white text-lg xl:text-xl font-semibold">GAMES</h3>
-                                <p className="my-2  text-[1rem]  xl:text-base cursor-pointer hover:text-white transition-all">ROULETTE</p>
-                                <p className="my-2  text-[1rem]  xl:text-base cursor-pointer hover:text-white transition-all">MINES</p>
+                                <h3 className="text-white text-[.9rem] xl:text-xl font-semibold">GAMES</h3>
+                                <p className="my-2  text-[.8rem]  xl:text-base cursor-pointer hover:text-white transition-all">ROULETTE</p>
+                                <p className="my-2  text-[.8rem]  xl:text-base cursor-pointer hover:text-white transition-all">MINES</p>
                             </div>
                             <div>
-                                <h3 className="text-white text-lg xl:text-xl font-semibold uppercase">Join our Community</h3>
+                                <h3 className="text-white text-[.9rem] xl:text-xl font-semibold uppercase">Join our Community</h3>
                                 <div className="flex gap-3 flex-wrap mt-4">
                                     <img src="/socialHandleSvg/telegram.svg" alt="Telegram" />
                                     <img src="/socialHandleSvg/git.svg" alt="GitHub" />
@@ -112,24 +112,24 @@ function Footer() {
                     </div>
 
                     <div>
-                        <p className='my-8 text-white font-light'>Sponsorship and Gaming Responsibilities</p>
-                        <div className='flex md:justify-between md:items-center flex-wrap gap-10'>
+                        <p className='my-8 text-white text-[1.1rem] md:text-[1.5rem] font-light'>Sponsorship and Gaming Responsibilities</p>
+                        <div className='flex ml-9 md:justify-between md:items-center flex-wrap gap-10 md:gap-10'>
                             <div className='w-20 md:w-28'>
                                 <img className='w-full' src="/sponsor/sigma.svg" alt="" />
                             </div>
-                            <div className='w-20 md:w-28'>
+                            <div className='w-12 md:w-28'>
                                 <img src="/sponsor/cloud9.svg" alt="" />
                             </div>
-                            <div className='w-20 md:w-28'>
+                            <div className='w-12 md:w-28'>
                                 <img src="/sponsor/afa.svg" alt="" />
                             </div>
-                            <div className='w-20 md:w-28'>
+                            <div className='w-12 md:w-28'>
                                 <img src="/sponsor/crypto.svg" alt="" />
                             </div>
-                            <div className='w-20 md:w-28'>
+                            <div className='w-12 md:w-28'>
                                 <img src="/sponsor/itech.svg" alt="" />
                             </div>
-                            <div className='w-20 md:w-28'>
+                            <div className='w-12 md:w-28'>
                                 <img src="/sponsor/gaming.svg" alt="" />
                             </div>
                         </div>
