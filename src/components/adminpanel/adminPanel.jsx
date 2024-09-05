@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import DashboardContent from './DashboardContent.jsx';
-import { FaHome, FaUser, FaCog, FaSignOutAlt, FaBell, FaUserCircle, FaSearch } from 'react-icons/fa';
+import { FaHome, FaUser, FaCog, FaSignOutAlt, FaBell, FaUserCircle, FaSearch, FaBackward, FaBackspace } from 'react-icons/fa';
 import Modal from '../modal.jsx';
 import SettingsLayout from '../settingcompo/Settings.jsx';
 import SettingPortal from '../settingcompo/settingPortal.jsx';
 import { motion } from 'framer-motion';
+import { FaBackwardFast, FaBackwardStep } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const AdminPanel = () => {
-  const [setting, setSetting] = useState(false)
+  const [setting, setSetting] = useState(false);
+  const navigate = useNavigate();
+
 
   return  (
     <div className="flex flex-col sm:flex-row min-h-screen bg-[#131620] sm:mb-4 mb-12">
@@ -40,9 +45,9 @@ const AdminPanel = () => {
           />
           <div className="sm:ml-0 ml-4">
             <h3 className="sm:mt-4 mt-8 ml-3 font-light text-sm sm:text-lg ">
-              Admin Name
+              User Name
             </h3>
-            <p className="text-sm text-gray-400 ">admin@example.com</p>
+            <p className="text-sm text-gray-400 ">User@example.com</p>
           </div>
         </div>
         <nav className="sm:mt-7 mt-4 sm:ml-10 mb-6">
@@ -52,7 +57,7 @@ const AdminPanel = () => {
                 href="/"
                 className="flex sm:w-[80%] items-center px-4 py-2 text-sm sm:text-xl font-medium hover:bg-yellow-400 hover:text-[#131620] rounded-md"
               >
-                <FaHome className="sm:mr-3 mr-2 sm:text-3xl text-yellow-400  text-xl" /> Home
+                <FaBackwardStep className="sm:mr-3 mr-2 sm:text-3xl text-yellow-400  text-xl" /> back
               </a>
             </li>
             <li className="mt-3" onClick={() => setSetting(true)}>
