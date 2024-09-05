@@ -108,10 +108,10 @@ function LandingPage() {
             <div className='relative w-full'>
               {/* Navigation Buttons */}
               <button className='absolute top-[4.3rem] -left-5 transform -translate-y-1/2 cursor-pointer md:block hidden z-10' onClick={() => handlePrev()}>
-                <img src="public/banner-left.svg" alt="Previous" />
+                <img src="public/banner-left.jpg" alt="Previous" />
               </button>
               <button className='absolute top-[4.3rem] right-6 transform -translate-y-1/2 cursor-pointer md:block hidden z-10' onClick={() => handleNext()}>
-                <img src="public/banner-right.svg" alt="Next" />
+                <img src="public/banner-right.jpg" alt="Next" />
               </button>
 
               {/* Image Slider */}
