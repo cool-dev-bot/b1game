@@ -273,7 +273,7 @@ function Header({ setLoginUser, loginUser, setDespositPopUp, depositPopUp }) {
                                             <img src="/IfUserLogged/wallet.svg" alt="" />
                                             <button>Wallet</button>
                                         </div>
-                                        <Link to={'/adminpanel'} className='sm:ml-4 ml-4 mt-1 sm:w-10 w-8 hover:w-11'>
+                                        <Link to={'/adminpanel'} className='sm:ml-4 ml-4 mt-1  sm:mt-0 sm:w-10 w-8 hover:w-11'>
                                             <img src="/IfUserLogged/user.svg" alt="" />
                                         </Link>
                                     </div>
