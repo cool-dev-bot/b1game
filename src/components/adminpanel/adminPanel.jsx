@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardContent from './DashboardContent.jsx';
-import { FaHome, FaUser, FaCog, FaSignOutAlt, FaBell, FaUserCircle, FaSearch, FaBackward, FaBackspace } from 'react-icons/fa';
-import Modal from '../modal.jsx';
+import { FaCog, FaSignOutAlt, FaBell, FaUserCircle, FaSearch } from 'react-icons/fa';
 import SettingsLayout from '../settingcompo/Settings.jsx';
 import SettingPortal from '../settingcompo/settingPortal.jsx';
 import { motion } from 'framer-motion';
 import { FaBackwardFast, FaBackwardStep } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 const AdminPanel = () => {
   const [setting, setSetting] = useState(false);
   const navigate = useNavigate();
+  const [userDetails, setUserDetails] = useState({})
+  // const [token, setToken] = useState(JSON.parse(localStorage.getItem('userInfo')))
 
+  function handleLogout() {
+    localStorage.removeItem("userInfo");
+  }
 
-  return  (
+  return (
     <div className="flex flex-col sm:flex-row min-h-screen bg-[#131620] sm:mb-4 mb-12">
       <div className="relative">
         {setting && (
@@ -29,10 +34,9 @@ const AdminPanel = () => {
         transition={{ type: 'spring', stiffness: 80 }}
       >
         <div className="flex sm:flex-col flex-row items-center justify-between sm:justify-center mt-0 sm:mt-10 mb-4">
-        <div className='flex items-center justify-between my-2 ml-32 sm:ml-0'>
-                                <img src="/logo.svg" alt="" className='sm:w-20 pt-1' />
-                           
-                            </div>
+          <div className='flex items-center justify-between my-2 ml-32 sm:ml-0'>
+            <img src="/logo.svg" alt="" className='sm:w-20 pt-1' />
+          </div>
         </div>
         <div className="flex sm:flex-col flex-row sm:items-center items-start justify-between sm:justify-center px-4 sm:px-0">
           <motion.img
@@ -44,10 +48,10 @@ const AdminPanel = () => {
             transition={{ duration: 0.5 }}
           />
           <div className="sm:ml-0 ml-4">
-            <h3 className="sm:mt-4 mt-8 ml-3 font-light text-sm sm:text-lg ">
-              User Name
+            <h3 className="sm:mt-4 mt-8 font-light text-sm sm:text-lg text-center">
+              {userDetails.name}
             </h3>
-            <p className="text-sm text-gray-400 ">User@example.com</p>
+            <p className="text-sm text-gray-400 text-center">{userDetails.email}</p>
           </div>
         </div>
         <nav className="sm:mt-7 mt-4 sm:ml-10 mb-6">
@@ -55,9 +59,10 @@ const AdminPanel = () => {
             <li className="mt-3 text-center">
               <a
                 href="/"
-                className="flex sm:w-[80%] items-center px-4 py-2 text-sm sm:text-xl font-medium hover:bg-yellow-400 hover:text-[#131620] rounded-md"
+                className="flex sm:w-[80%] items-center px-4 py-2 text-sm sm:text-xl font-medium hover:bg-yellow-400  hover:text-[#131620] rounded-md"
               >
-                <FaBackwardStep className="sm:mr-3 mr-2 sm:text-3xl text-yellow-400  text-xl" /> back
+                <FaBackwardStep className="sm:mr-3 mr-2 sm:text-3xl text-xl" />
+                <p>back</p>
               </a>
             </li>
             <li className="mt-3" onClick={() => setSetting(true)}>
@@ -71,17 +76,17 @@ const AdminPanel = () => {
           </ul>
         </nav>
         <div className="fixed bottom-0 w-full p-4">
-      <a href="/">
-        <motion.button
-          className="flex items-center justify-center sm:h-14 w-full sm:w-[15%] sm:m-0 px-4 py-2 text-sm text-[#131620] font-light sm:font-medium bg-yellow-500 rounded-md"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.4, duration: .5, ease: 'easeOut' }}
-        >
-          <FaSignOutAlt className="sm:mr-2 mr-2 sm:text-2xl" /> Logout
-        </motion.button>
-      </a>
-    </div>
+          <div onClick={() => handleLogout()}>
+            <motion.button
+              className="flex items-center justify-center sm:h-14 w-full sm:w-[15%] sm:m-0 px-4 py-2 text-sm text-[#131620] font-light sm:font-medium bg-yellow-500 rounded-md"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.4, duration: .5, ease: 'easeOut' }}
+            >
+              <FaSignOutAlt className="sm:mr-2 mr-2 sm:text-2xl" /> Logout
+            </motion.button>
+          </div>
+        </div>
       </motion.aside>
       <div className="flex-1">
         <header className="flex flex-row sm:flex-row items-center justify-between p-4 bg-[#1f2331] sm:bg-[#131620] shadow-md">
@@ -92,7 +97,7 @@ const AdminPanel = () => {
                 type="text"
                 className="sm:w-full w-auto bg-[#131620] text-gray-200 pl-10 pr-4 py-2 text-sm rounded-full focus:outline-none"
                 placeholder="Search..."
-              />  
+              />
             </div>
           </div>
           <div className="flex items-center justify-end w-80 sm:w-auto mt-2 sm:mt-0 space-x-4">
