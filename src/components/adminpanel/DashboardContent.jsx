@@ -8,7 +8,7 @@ const DashboardContent = () => {
   };
 
   return (
-    <div className="p-6 bg-[#131620] ">
+    <div className="p-6  ">
      <div className="grid grid-cols-1 gap-6 mb-6 sm:grid-cols-2 lg:grid-cols-3">
       {/* Cards */}
       <motion.div

@@ -44,7 +44,12 @@ const AdminPanel = () => {
   }
 
   return (
-    <div className="flex flex-col sm:flex-row min-h-screen bg-[#131620] sm:mb-4 mb-12">
+    <div className="flex flex-col sm:flex-row min-h-screen  sm:mb-4 mb-12"
+    style={{
+      backgroundImage: `url('/bg.jpg')`,
+      backgroundSize: 'cover', // or 'contain' depending on the fit you want
+      backgroundPosition: 'center',
+    }}>
       <div className="relative">
         {setting && (
           <SettingPortal>
@@ -53,7 +58,7 @@ const AdminPanel = () => {
         )}
       </div>
       <motion.aside
-        className="sm:w-64 w-full sm:h-screen h-[30%] bg-[#131620] text-gray-100 flex-shrink-0"
+        className="sm:w-64 w-full sm:h-screen h-[30%]  text-gray-100 flex-shrink-0"
         initial={{ x: '-100%' }}
         animate={{ x: 0 }}
         transition={{ type: 'spring', stiffness: 80 }}
@@ -73,7 +78,7 @@ const AdminPanel = () => {
             transition={{ duration: 0.5 }}
           />
           <div className="sm:ml-0 ml-4">
-            <h3 className="sm:mt-4 mt-8 font-light text-sm sm:text-lg text-center">
+            <h3 className="sm:mt-4 mt-8 font-bold text-sm sm:text-lg text-center">
               {userDetails ? userDetails.name : 'userName'}
             </h3>
             <p className="text-sm text-gray-400 text-center">{userDetails ? userDetails.email : 'user Email'}</p>
@@ -86,8 +91,8 @@ const AdminPanel = () => {
                 href="/"
                 className="flex sm:w-[80%] items-center px-4 py-2 text-sm sm:text-xl font-medium hover:bg-yellow-400  hover:text-[#131620] rounded-md"
               >
-                <FaBackwardStep className="sm:mr-3 mr-2 sm:text-3xl text-xl" />
-                <p>back</p>
+                <FaBackwardStep className="sm:mr-3 mr-2 sm:text-3xl text-xl text-yellow-500" />
+                <p className=' '>back</p>
               </a>
             </li>
             <li className="mt-3" onClick={() => setSetting(true)}>
@@ -114,13 +119,13 @@ const AdminPanel = () => {
         </div>
       </motion.aside>
       <div className="flex-1">
-        <header className="flex flex-row sm:flex-row items-center justify-between p-4 bg-[#1f2331] sm:bg-[#131620] shadow-md">
+        <header className="flex flex-row sm:flex-row items-center justify-between p-4  bg-[#1d2230] sm:bg-transparent shadow-md">
           <div className="flex flex-col sm:flex-row items-center w-full sm:w-auto">
             <div className="relative mt-3 sm:mt-0 sm:ml-4 w-full sm:w-64">
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
-                className="sm:w-full w-auto bg-[#131620] text-gray-200 pl-10 pr-4 py-2 text-sm rounded-full focus:outline-none"
+                className="sm:w-full w-auto  text-gray-200 pl-10 pr-4 py-2 text-sm rounded-full focus:outline-none"
                 placeholder="Search..."
               />
             </div>
@@ -130,7 +135,7 @@ const AdminPanel = () => {
             <FaUserCircle className="text-gray-100 sm:text-3xl text-2xl" />
           </div>
         </header>
-        <DashboardContent />
+        <DashboardContent  />
       </div>
     </div>
   );

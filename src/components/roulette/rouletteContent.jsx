@@ -3,7 +3,12 @@ import Sidebar from '../sidebar';
 import { motion } from 'framer-motion';
 function RolleteContent() {
     return (
-        <div className="max-w-[1500px] h-full md:h-full mx-auto font-['oswald'] pl-4 pr-4 md:pr-0 sm:pl-4 md:pl-5">
+        <div className="max-w-[1500px] h-full md:h-full mx-auto font-['oswald'] pl-4 pr-4 md:pr-0 sm:pl-4 md:pl-5"
+        style={{
+            backgroundImage: `url('/bg.jpg')`,
+            backgroundSize: 'cover', // or 'contain' depending on the fit you want
+            backgroundPosition: 'center',
+          }}>
             <div className='flex flex-col md:flex-row justify-between md:pr-3 mb-4 py-5 md:py-6 gap-5 lg:gap-0'>
                 <Sidebar />
                 <motion.div className='md:w-[88%] md:mx-auto'
