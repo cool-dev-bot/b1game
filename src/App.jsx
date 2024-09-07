@@ -46,10 +46,12 @@ function App() {
   }
 
   return (
-    <loginContext.Provider value={{ setSaveUserInfo, userDetails }} className='mainBg max-w-screen h-full mx-auto'>
-      <Header setLoginUser={setLoginUser} loginUser={loginUser} setDespositPopUp={setDespositPopUp} depositPopUp={depositPopUp} />
-      <Outlet context={[setLoginUser, loginUser, setDespositPopUp, depositPopUp]} />
-      <Footer />
+    <loginContext.Provider value={{ setSaveUserInfo, userDetails }} className=''>
+      <div className='mainBg max-w-screen h-full mx-auto'>
+        <Header setLoginUser={setLoginUser} loginUser={loginUser} setDespositPopUp={setDespositPopUp} depositPopUp={depositPopUp} />
+        <Outlet context={[setLoginUser, loginUser, setDespositPopUp, depositPopUp]} />
+        <Footer />
+      </div>
     </loginContext.Provider>
   );
 }
