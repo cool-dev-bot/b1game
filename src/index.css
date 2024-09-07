@@ -16,7 +16,7 @@
 }
 
 .mainBg {
-  background-image: url('/public/homepagebg.png');
+  background-image: url('/public/bg.jpg');
   width: 100%;
   background-size: cover;
   background-position: center;
