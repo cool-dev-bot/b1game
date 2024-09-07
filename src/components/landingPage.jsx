@@ -101,11 +101,6 @@ function LandingPage() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        style={{
-          backgroundImage: `url('/bg.jpg')`,
-          backgroundSize: 'cover', // or 'contain' depending on the fit you want
-          backgroundPosition: 'center',
-        }}
       >
         <div className='flex flex-col md:flex-row justify-between md:pr-10 my-4 md:py-5 gap-5 md:gap-10 lg:gap-12'>
           <Sidebar />
